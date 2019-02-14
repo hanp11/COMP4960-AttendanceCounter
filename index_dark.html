@@ -14,8 +14,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
       
     <style>
-        nav {
-            height: 40px;
+        html, body {
+            background: #495057;
         }
         
         button {
@@ -23,10 +23,21 @@
             margin-right: 30px;
             margin-bottom: 10px;
         }
+		
+		#topbar{
+			padding-bottom: 20px;
+		}
+		
+		#topbar a{
+			padding-right:20px;
+			font-size: 150%;
+		}
+		
+		
     </style>
   </head>
   <body>    
-    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light" style="font-size: 20px;">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="font-size: 20px;">
         <div class="navbar-collapse collapse w-100">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -37,7 +48,7 @@
         <div class="navbar-collapse collapse w-100">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Logout</a>
@@ -48,24 +59,21 @@
             </ul>
         </div>
     </nav>
-	<h1 style="text-align: center; margin-top:20px;">Build/Edit Database</h1>
-	<ul style="padding: 0 2%;" class="nav nav-tabs nav-fill">
-		  <li class="nav-item">
-			<a class="nav-link" href="sessions.html">Sessions</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="speakers.html">Speakers</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="timeslots.html">Time Slots</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="rooms.html">Rooms</a>
-		  </li>
-		</ul>
-    <main style="margin:5%; text-align:center;">
-		<h2>Welcome, Admin!</h2>
-   		<h3>Select a tab to begin.</h3>  
+    <main style="text-align: center; margin-top: 20px;">
+		<nav id="topbar">
+				<a href="/sessions.html">Sessions</a>
+				<a href="/speakers.html">Speakers</a> 
+				<a href="/timeslots.html">Time Slots</a>
+				<a href="/rooms.html">Rooms</a>
+		</nav>
+		<h1>Welcome, Admin!</h1>
+        <h3 style="color: white; font-size: 20px;"><u>Add/Edit Event Information</u></h3>
+		<nav style="margin: auto;">
+			<button type="button" class="btn btn-light">Sessions</button><br/>
+			<button type="button" class="btn btn-light">Speakers</button><br/>
+			<button type="button" class="btn btn-light">Time Slots</button><br/>
+			<button type="button" class="btn btn-light">Rooms</button><br/>
+		</nav>
     </main>
   </body>
 </html>
