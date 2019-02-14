@@ -23,6 +23,17 @@
             margin-right: 30px;
             margin-bottom: 10px;
         }
+		
+		#topbar{
+			padding-bottom: 20px;
+		}
+		
+		#topbar a{
+			padding-right:20px;
+			font-size: 150%;
+		}
+		
+		
     </style>
   </head>
   <body>    
@@ -40,9 +51,6 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">Logout</a>
                 </li>
                 <li class="nav-item">
@@ -51,22 +59,21 @@
             </ul>
         </div>
     </nav>
-    <main style="margin-left: 100px; margin-top: 100px;">
+    <main style="text-align: center; margin-top: 20px;">
+		<nav id="topbar">
+				<a href="/sessions.html">Sessions</a>
+				<a href="/speakers.html">Speakers</a> 
+				<a href="/timeslots.html">Time Slots</a>
+				<a href="/rooms.html">Rooms</a>
+		</nav>
+		<h1>Welcome, Admin!</h1>
         <h3 style="color: white; font-size: 20px;"><u>Add/Edit Event Information</u></h3>
-		<table style="margin-left: 50px;">
-			<tr>   
-				<td><button type="button" class="btn btn-light">Sessions</button></td>
-			</tr>
-			<tr>
-				<td><button type="button" class="btn btn-light">Speakers</button></td>
-			</tr>
-			<tr>
-				<td><button type="button" class="btn btn-light">Time Slots</button></td>
-			</tr>
-			<tr>
-				<td><button type="button" class="btn btn-light">Rooms</button></td>
-			</tr>
-		</table>
+		<nav style="margin: auto;">
+			<button type="button" class="btn btn-light">Sessions</button><br/>
+			<button type="button" class="btn btn-light">Speakers</button><br/>
+			<button type="button" class="btn btn-light">Time Slots</button><br/>
+			<button type="button" class="btn btn-light">Rooms</button><br/>
+		</nav>
     </main>
   </body>
 </html>
