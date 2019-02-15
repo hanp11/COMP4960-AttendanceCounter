@@ -7,11 +7,15 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
 
     <!-- JS, Popper.js, jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <style>
         nav {
@@ -26,15 +30,15 @@
     </style>
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light" style="font-size: 20px;">
-        <div class="navbar-collapse collapse w-100">
+    <nav class="navbar sticky-top navbar-expand-md navbar-dark">
+        <div id="SiteName" class="navbar-collapse collapse w-100">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Boston Code Camp</a>
+                    <a class="nav-link" href="index.html">Boston Code Camp</a>
                 </li>
             </ul>
         </div>
-        <div class="navbar-collapse collapse w-100">
+        <div id="MenuItems" class="navbar-collapse collapse w-100">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
@@ -60,48 +64,48 @@
 			<a class="nav-link" href="timeslots.html">Time Slots</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link active" href="rooms.html">Rooms</a>
+			<a class="nav-link" href="rooms.html">Rooms</a>
 		  </li>
 		</ul>
-    <main style="margin: 5%; text-align:center;">
-		<h2>Rooms</h2>
-    	<ul style="padding: 0 2%;" class="nav nav-tabs nav-fill">
-		  <li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#add">Add a New Room</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#edit">Edit/Delete a Room</a>
-		  </li>
-		</ul>
-		<div class="tab-content well">
-  			<div class="tab-pane" id="add">
-				<br/>
-				<h4>Add a New Room</h4>
-				<form>
-					<label>Room Name:</label>
-					<input type="text" name="roomName"><br/>
-					<label>Capacity:</label>
-					<input type="number" name="capacity"><br/>
-					<input type="submit" value="Add"><input type="reset">
-				</form>
-			</div>
- 		    <div class="tab-pane" id="edit">
-			<br/>
-				<h4>Edit/Delete a Room</h4>
-				<form>
-					<label>Choose Existing:</label>
-					<select name="existingRooms">
-						<option value="room1">Room 1</option>
-						<option value="room2">Room 2</option>
-					</select><br/>
-					<label>Room Name:</label>
-					<input type="text" name="roomName"><br/>
-					<label>Capacity:</label>
-					<input type="number" name="capacity"><br/>
-					<input type="submit" value="Edit"><input type="button" name="delete" value="Delete"><input type="reset">
-				</form>
-			</div>
-		</div>
+    <main style="margin:5%; text-align:center;">
+      <h2>Rooms</h2>
+        <ul style="padding: 0 2%;" class="nav nav-tabs nav-fill">
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#add">Add a New Room</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#edit">Edit/Delete a Room</a>
+        </li>
+      </ul>
+      <div class="tab-content well">
+          <div class="tab-pane" id="add">
+          <br/>
+          <h4>Add a New Room</h4>
+          <form>
+            <label>Room Name:</label>
+            <input type="text" name="roomName"><br/>
+            <label>Capacity:</label>
+            <input type="number" name="capacity"><br/>
+            <input type="submit" value="Add"><input type="reset">
+          </form>
+        </div>
+          <div class="tab-pane" id="edit">
+        <br/>
+          <h4>Edit/Delete a Room</h4>
+          <form>
+            <label>Choose Existing:</label>
+            <select name="existingRooms">
+              <option value="room1">Room 1</option>
+              <option value="room2">Room 2</option>
+            </select><br/>
+            <label>Room Name:</label>
+            <input type="text" name="roomName"><br/>
+            <label>Capacity:</label>
+            <input type="number" name="capacity"><br/>
+            <input type="submit" value="Edit"><input type="button" name="delete" value="Delete"><input type="reset">
+          </form>
+        </div>
+      </div>
     </main>
   </body>
 </html>

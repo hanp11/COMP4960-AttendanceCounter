@@ -1,0 +1,20 @@
+nav {
+    height: 60px;
+    background-color: #228FCF;
+}
+
+#SiteName {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#MenuItems {
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center; 
+    margin-top:20px;
+}
