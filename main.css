@@ -1,20 +1,61 @@
-nav {
+.navbar {
     height: 60px;
     background-color: #228FCF;
 }
 
-#SiteName {
-    font-family: Montserrat;
+#siteName {
+    font-family: Raleway;
     font-weight: bold;
     font-size: 20px;
 }
 
-#MenuItems {
-    font-family: Montserrat;
-    font-weight: bold;
+#menuItems {
+    font-family: Robo+Slab;
+    font-size: 17px;
 }
 
 h1 {
-    text-align: center; 
-    margin-top:20px;
+    font-family: Oswald;
+}
+
+.nav-tabs {
+    font-family: Robo+Slab;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #228FCF;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nav-tabs > li > a{
+    border: medium none;
+    border-radius: 0;
+    color:#343a40;
+}
+
+.nav-tabs > li > a:hover{
+    background-color: #FFF;
+}
+
+.tab-content {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.tab-pane {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px 5px 5px;
+    padding: 100px;
+}
+
+.jumbotron {
+    margin-bottom: 5px;
+}
+
+.navbar-brand {
+    margin-right: 0;
 }
