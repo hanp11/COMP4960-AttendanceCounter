@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -7,12 +8,12 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="jquery-editable-select.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
+    <link href="{% static 'boston_code_camp/jquery-editable-select.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'boston_code_camp/main.css' %}">
 
     <!-- JS, Popper.js, jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="jquery-editable-select.min.js"></script>
+    <script src="{% static 'boston_code_camp/jquery-editable-select.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
@@ -24,13 +25,13 @@
   </head>
   <body>
     <nav class="navbar sticky-top navbar-expand-md navbar-dark">
-        <a class="navbar-brand" href="#">
-            <img src="boscc.jpg" width="50" height="30" alt="">
+        <a class="navbar-brand" href="{% url 'bcc-index' %}">
+                <img src="{% static 'boston_code_camp/images/bclogo.png' %}" width="50" height="30" alt=""/>
         </a>
         <div id="siteName" class="navbar-collapse collapse w-100">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Boston Code Camp</a>
+                    <a class="nav-link" href="{% url 'bcc-index' %}">Boston Code Camp</a>
                 </li>
             </ul>
         </div>
@@ -70,11 +71,12 @@
                 <form>
                   <label>Room Name:</label>
                   <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                      <option>Room1</option>
-                      <option>Room2</option>
-                      <option>Room3</option>
-                      <option>Room4</option>
-                  </select><br/>
+                        {% block content %}
+                        {% for room in roomID %}
+                            <option>{{ room.roomName }}</option>
+                        {% endfor %}
+                    {% endblock content %}
+                    </select>
                   <label>Capacity:</label>
                   <input type="number"><br/>
                   <input type="submit" value="Add/Edit">
