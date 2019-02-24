@@ -1,7 +1,7 @@
-{% load static %}
+﻿{% load static %}
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>BCC Attendance Tracker</title>
     <meta name="description" content="Record attendence of a Boston Code Camp event.">
@@ -9,7 +9,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="{% static 'boston_code_camp/jquery-editable-select.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'boston_code_camp/main.css' %}">
+    <link rel="stylesheet" href="{% static 'boston_code_camp/main.css' %}">
 
     <!-- JS, Popper.js, jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -22,34 +22,38 @@
     <link href='https://fonts.googleapis.com/css?family=Robo+Slab' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-  </head>
-  <body>
+</head>
+<body>
     <nav class="navbar sticky-top navbar-expand-md navbar-dark">
-        <a class="navbar-brand" href="{% url 'bcc-index' %}">
-                <img src="{% static 'boston_code_camp/images/bclogo.png' %}" width="50" height="30" alt=""/>
+        <a class="navbar-brand" href="#">
+            <img style="margin-bottom: 5px;" src="bclogo.png" width="20" height="30" alt="">
         </a>
         <div id="siteName" class="navbar-collapse collapse w-100">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'bcc-index' %}">Boston Code Camp</a>
+                    <a class="nav-link" href="#">Boston Code Camp</a>
                 </li>
             </ul>
         </div>
         <div id="menuItems" class="navbar-collapse collapse w-100">
             <ul class="navbar-nav ml-auto">
+                <!--
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sign in</a>
-                </li>
+                    <button class="btn btn-outline-light">
+                        <img src="user-solid.svg" width="20" /> Log out
+                    </button>
+                </li>-->
             </ul>
         </div>
     </nav>
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-4">Attendance Tracker</h1>
-        <p class="lead">Record attendance for the Boston Code Camp event.</p>
-      </div>
-    </div>
-    <main>
+    <!--<div id="banner">
+        <div id="wrapper">
+            <div id="container">
+                <img class="banner-img" src="website_banner.png" alt="">
+            </div>
+        </div>
+    </div>-->
+    <main style="margin-top: 10px;">
         <ul id="menuTabs" class="nav nav-tabs nav-fill" role="tablist">
             <li class="nav-item">
                 <a id="rooms-tab" class="nav-link active" href="#rooms" data-toggle="tab">Rooms</a>
@@ -64,99 +68,113 @@
                 <a id="speakers-tab" class="nav-link" href="#speakers" data-toggle="tab">Speakers</a>
             </li>
         </ul>
-        <div id="menuTabsContent" class="tab-content" style="text-align:center;">
+        <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="rooms" role="tabpanel">
                 <h2>Rooms</h2>
-                <p>Select an existing room to edit, or enter a new room.</p>
+                <p>Enter a new room to add or select an existing room to edit.</p>
                 <form>
-                  <label>Room Name:</label>
-                  <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                        {% block content %}
-                        {% for room in roomID %}
-                            <option>{{ room.roomName }}</option>
-                        {% endfor %}
-                    {% endblock content %}
+                    <label style="padding-left: 0px;">Room Name:</label>&nbsp;
+                    <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
+                        <option>123</option>
+                        <option>124</option>
+                        <option>131</option>
+                        <option>132</option>
                     </select>
-                  <label>Capacity:</label>
-                  <input type="number"><br/>
-                  <input type="submit" value="Add/Edit">
-                  <input type="button" value="Delete">
-                  <input type="button" value="Clear">
+                    <label>Capacity (range 0-500):</label>&nbsp;
+                    <input type="number" min="0" max="500"><br>
+                    <button type="button" class="btn btn-success">Add</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-dark">Clear Fields</button>
                 </form>
             </div>
             <div class="tab-pane fade" id="sessions" role="tabpanel">
-              <h2>Sessions</h2>
-              <p>Select an existing session, or enter new session details.</p>
-              <form>
-                <label>Session Name:</label>
-                <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                    <option>Session1</option>
-                    <option>Session2</option>
-                    <option>Session3</option>
-                    <option>Session4</option>
-                </select><br/>
-                <label>Room:</label>
-                <select id="rooms">
-                  <option>Room1</option>
-                  <option>Room2</option>
-                  <option>Room3</option>
-                  <option>Room4</option>
-                </select><br/>
-                <select id="times">
-                  <option>12:00pm-1:00pm</option>
-                  <option>12:30pm-1:30pm</option>
-                  <option>1:00pm-3:00pm</option>
-                  <option>4:00pm-5:45pm</option>
-                </select><br/>
-                <select id="speakers">
-                  <option>Joe Smith (joesmith@gmail.com)</option>
-                  <option>Joe Smith (joeiscool@hotmail.com)</option>
-                  <option>Gary Jones</option>
-                  <option>Sarah Peterson</option>
-                </select><br/>
-                <input type="submit" value="Add/Edit">
-                <input type="button" value="Delete">
-                <input type="button" value="Clear">
-              </form>
+                <h2>Sessions</h2>
+                <p>Enter a new session to add or select an existing session to edit.</p>
+                <form>
+                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Session Name:</label>&nbsp;
+                    <select id="editable-select1" style="border-color: #ced4da; border-width: 1px;">
+                        <option>123</option>
+                        <option>124</option>
+                        <option>131</option>
+                        <option>132</option>
+                    </select><br>
+                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Room Name:</label>&nbsp;
+                    <select id="editable-select2" style="border-color: #ced4da; border-width: 1px;">
+                        <option>123</option>
+                        <option>124</option>
+                        <option>131</option>
+                        <option>132</option>
+                    </select><br>
+                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Speaker:</label>&nbsp;
+                    <select id="editable-select3" style="border-color: #ced4da; border-width: 1px;">
+                        <option>123</option>
+                        <option>124</option>
+                        <option>131</option>
+                        <option>132</option>
+                    </select><br>
+                    <button type="button" class="btn btn-success">Add/Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-dark">Clear</button>
+                </form>
             </div>
             <div class="tab-pane fade" id="timeSlots" role="tabpanel">
-              <h2>Time Slots</h2>
-              <p>Select an existing time slot to edit, or enter a new time slot.</p>
-              <form>
-                <label>Time Slot:</label>
-                <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                  <option>12:00pm-1:00pm</option>
-                  <option>12:30pm-1:30pm</option>
-                  <option>1:00pm-3:00pm</option>
-                  <option>4:00pm-5:45pm</option>
-                </select><br/>
-                <input type="submit" value="Add/Edit">
-                <input type="button" value="Delete">
-                <input type="button" value="Clear">
-              </form>
+                <h2>Time Slots</h2>
+                <p>Enter a new time slot to add or select an existing time slot to edit.</p>
+                <form>
+                    <label>Start Time:</label>&nbsp;
+                    <input type="time" style="border-color: #ced4da; border-width: 1px;">
+                    <label>End Time:</label>&nbsp;
+                    <input type="time" style="border-color: #ced4da; border-width: 1px;">
+                    <label>Duration (min):</label>&nbsp;
+                    <input type="number" min="0" max="24"><br>
+                    <button type="button" class="btn btn-success">Add/Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-dark">Clear</button>
+                </form>
             </div>
             <div class="tab-pane fade" id="speakers" role="tabpanel">
-              <h2>Speakers</h2>
-              <p>Select an existing speaker to edit, or enter a new speaker.</p>
-              <form>
-                <label>Speakers:</label>
-                <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                  <option>Joe Smith (joesmith@gmail.com)</option>
-                  <option>Joe Smith (joeiscool@hotmail.com)</option>
-                  <option>Gary Jones</option>
-                  <option>Sarah Peterson</option>
-                </select><br/>
-                <label>E-Mail:</label>
-                <input type="email">
-                <input type="submit" value="Add/Edit">
-                <input type="button" value="Delete">
-                <input type="button" value="Clear">
-              </form>
+                <h2>Speakers</h2>
+                <p>Enter a new speaker to add or select an existing speaker to edit.</p>
+                <form>
+                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">First Name:</label>&nbsp;
+                    <select id="editable-select5" style="border-color: #ced4da; border-width: 1px;">
+                        <option>123</option>
+                        <option>124</option>
+                        <option>131</option>
+                        <option>132</option>
+                    </select><br>
+                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Last Name:</label>&nbsp;
+                    <select id="editable-select6" style="border-color: #ced4da; border-width: 1px;">
+                        <option>123</option>
+                        <option>124</option>
+                        <option>131</option>
+                        <option>132</option>
+                    </select><br>
+                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Email:</label>&nbsp;
+                    <select id="editable-select4" style="border-color: #ced4da; border-width: 1px;">
+                        <option>123</option>
+                        <option>124</option>
+                        <option>131</option>
+                        <option>132</option>
+                    </select><br>
+                    <button type="button" class="btn btn-success">Add/Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-dark">Clear</button>
+                </form>
             </div>
         </div>
     </main>
+    <div class="footer">
+        <p>Wentworth Institute of Technology | COMP-4960 | Yellow-Team</p>
+    </div>
     <script>
         $('#editable-select').editableSelect();
+        $('#editable-select1').editableSelect();
+        $('#editable-select2').editableSelect();
+        $('#editable-select3').editableSelect();
+        $('#editable-select4').editableSelect();
+        $('#editable-select5').editableSelect();
+        $('#editable-select6').editableSelect();
     </script>
-  </body>
+</body>
 </html>
