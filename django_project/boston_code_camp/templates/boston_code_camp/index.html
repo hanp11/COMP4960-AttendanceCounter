@@ -26,7 +26,7 @@
 <body>
     <nav class="navbar sticky-top navbar-expand-md navbar-dark">
         <a class="navbar-brand" href="#">
-            <img style="margin-bottom: 5px;" src="bclogo.png" width="20" height="30" alt="">
+            <img style="margin-bottom: 5px;" src="{% static 'boston_code_camp/images/bclogo.png' %}" width="20" height="30" alt="">
         </a>
         <div id="siteName" class="navbar-collapse collapse w-100">
             <ul class="navbar-nav mr-auto">
@@ -75,10 +75,11 @@
                 <form>
                     <label style="padding-left: 0px;">Room Name:</label>&nbsp;
                     <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content1 %}
+                        {% for room in roomID %}
+                            <option>{{ room.RoomName }}</option>
+                        {% endfor %}
+                        {% endblock content1 %}
                     </select>
                     <label>Capacity (range 0-500):</label>&nbsp;
                     <input type="number" min="0" max="500"><br>
@@ -93,31 +94,36 @@
                 <form>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Session Name:</label>&nbsp;
                     <select id="editable-select1" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content2 %}
+                        {% for session in sessionID %}
+                            <option>{{ session.SessionName }}</option>
+                        {% endfor %}
+                        {% endblock content2 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Room Name:</label>&nbsp;
                     <select id="editable-select2" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content3 %}
+                        {% for room in roomID %}
+                            <option>{{ room.RoomName }}</option>
+                        {% endfor %}
+                        {% endblock content3 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Speaker:</label>&nbsp;
                     <select id="editable-select3" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content4 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.FirstName}} {{ speaker.LastName}}</option>
+                        {% endfor %}
+                        {% endblock content4 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Time Slot:</label>&nbsp;
                     <select id="editable-select7" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content5 %}
+                        {% for timeslot in timeslotID %}
+                        {x = timeslot.StartTime}
+                            <option>{{ timeslot.StartTime}}-{{timeslot.EndTime}}</option>
+                        {% endfor %}
+                        {% endblock content5 %}
                     </select><br>
                     <button type="button" class="btn btn-success">Add/Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
@@ -145,24 +151,27 @@
                 <form>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">First Name:</label>&nbsp;
                     <select id="editable-select5" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content6 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.FirstName}}</option>
+                        {% endfor %}
+                        {% endblock content6 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Last Name:</label>&nbsp;
                     <select id="editable-select6" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content7 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.LastName}}</option>
+                        {% endfor %}
+                        {% endblock content7 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Email:</label>&nbsp;
                     <select id="editable-select4" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content8 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.Email}}</option>
+                        {% endfor %}
+                        {% endblock content8 %}
                     </select><br>
                     <button type="button" class="btn btn-success">Add/Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
