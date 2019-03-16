@@ -1,3 +1,9 @@
 *.pyc
 *__pycache__*
 *.vscode
+COMP4960/.DS_Store
+django_project/.DS_Store
+django_project/boston_code_camp/.DS_Store
+django_project/boston_code_camp/static/.DS_Store
+django_project/boston_code_camp/static/boston_code_camp/.DS_Store
+.DS_Store
