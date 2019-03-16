@@ -15,27 +15,17 @@ class Migration(migrations.Migration):
             name='Room',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('RoomName', models.CharField(max_length=100)),
+                ('RoomName', models.CharField(max_length=30)),
                 ('Capacity', models.CharField(max_length=15)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Session',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('SessionName', models.CharField(max_length=200)),
-                ('RoomName', models.CharField(max_length=100)),
-                ('Speaker', models.CharField(max_length=100)),
-                ('TimeSlot', models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
             name='Speaker',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('FirstName', models.CharField(max_length=100)),
-                ('LastName', models.CharField(max_length=100)),
-                ('Email', models.CharField(max_length=100)),
+                ('FirstName', models.CharField(max_length=30)),
+                ('LastName', models.CharField(max_length=30)),
+                ('Email', models.CharField(max_length=30)),
             ],
         ),
         migrations.CreateModel(
@@ -45,6 +35,16 @@ class Migration(migrations.Migration):
                 ('StartTime', models.CharField(max_length=15)),
                 ('EndTime', models.CharField(max_length=15)),
                 ('Duration', models.CharField(max_length=15)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Session',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('SessionName', models.CharField(max_length=30)),
+                ('RoomName', models.ForeignKey('Room', on_delete=models.CASCADE)),
+                ('Speaker', models.ForeignKey('Speaker', on_delete=models.CASCADE)),
+                ('TimeSlot', models.CharField(max_length=30)),
             ],
         ),
     ]
