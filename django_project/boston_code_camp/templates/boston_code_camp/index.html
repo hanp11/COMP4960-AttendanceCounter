@@ -75,14 +75,16 @@
                 <form>
                     <label style="padding-left: 0px;">Room Name:</label>&nbsp;
                     <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content1 %}
+                        {% for room in roomID %}
+                            <option>{{ room.RoomName }}</option>
+                        {% endfor %}
+                        {% endblock content1 %}
                     </select>
                     <label>Capacity (range 0-500):</label>&nbsp;
                     <input type="number" min="0" max="500"><br>
-                    <button type="button" class="btn btn-success">Add</button>
+					<div style="height: 210px;"></div>								  
+                    <button type="button" class="btn btn-success">Add/Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                     <button type="button" class="btn btn-dark">Clear Fields</button>
                 </form>
@@ -93,35 +95,44 @@
                 <form>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Session Name:</label>&nbsp;
                     <select id="editable-select1" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
-                    </select><br>
+                        {% block content2 %}
+                        {% for session in sessionID %}
+                            <option>{{ session.SessionName }}</option>
+                        {% endfor %}
+                        {% endblock content2 %}
+                    </select>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Room Name:</label>&nbsp;
-                    <select id="editable-select2" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
-                    </select><br>
-                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Speaker:</label>&nbsp;
-                    <select id="editable-select3" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                    <select id="editable-select2" style="border-color: #ced4da; border-width: 1px; margin-right: 100px;">
+                        {% block content3 %}
+                        {% for room in roomID %}
+                            <option>{{ room.RoomName }}</option>
+                        {% endfor %}
+                        {% endblock content3 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Time Slot:</label>&nbsp;
                     <select id="editable-select7" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
-                    </select><br>
+                        {% block content5 %}
+                        {% for timeslot in timeslotID %}
+                        {x = timeslot.StartTime}
+                            <option>{{ timeslot.StartTime}}-{{timeslot.EndTime}}</option>
+                        {% endfor %}
+                        {% endblock content5 %}
+                    </select>																										  
+                    <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Speaker:</label>&nbsp;
+                    <select id="editable-select3" style="border-color: #ced4da; border-width: 1px;">
+                        {% block content4 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.FirstName}} {{ speaker.LastName}}</option>
+                        {% endfor %}
+                        {% endblock content4 %}
+                    </select>
+					<button type="button" class="btn btn-success" style="width: 80px;">Add</button>
+                    <select size="5" style="width: 200px; margin-left: 500px;">
+                    </select>
+                    <button type="button" class="btn btn-danger">Remove</button><br>
                     <button type="button" class="btn btn-success">Add/Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-dark">Clear</button>
+                    <button type="button" class="btn btn-dark">Clear Fields</button>
                 </form>
             </div>
             <div class="tab-pane fade" id="timeSlots" role="tabpanel">
@@ -134,9 +145,10 @@
                     <input type="time" style="border-color: #ced4da; border-width: 1px;">
                     <label>Duration (min):</label>&nbsp;
                     <input type="number" min="0" max="24"><br>
+					<div style="height: 210px;"></div>																 
                     <button type="button" class="btn btn-success">Add/Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-dark">Clear</button>
+                    <button type="button" class="btn btn-dark">Clear Fields</button>
                 </form>
             </div>
             <div class="tab-pane fade" id="speakers" role="tabpanel">
@@ -145,28 +157,32 @@
                 <form>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">First Name:</label>&nbsp;
                     <select id="editable-select5" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content6 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.FirstName}}</option>
+                        {% endfor %}
+                        {% endblock content6 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Last Name:</label>&nbsp;
                     <select id="editable-select6" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content7 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.LastName}}</option>
+                        {% endfor %}
+                        {% endblock content7 %}
                     </select><br>
                     <label style="padding-left: 0px; width: 140px; display: inline-block; text-align: right;">Email:</label>&nbsp;
                     <select id="editable-select4" style="border-color: #ced4da; border-width: 1px;">
-                        <option>123</option>
-                        <option>124</option>
-                        <option>131</option>
-                        <option>132</option>
+                        {% block content8 %}
+                        {% for speaker in speakerID %}
+                            <option>{{ speaker.Email}}</option>
+                        {% endfor %}
+                        {% endblock content8 %}
                     </select><br>
+					<div style="height: 60px;"></div>						
                     <button type="button" class="btn btn-success">Add/Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-dark">Clear</button>
+                    <button type="button" class="btn btn-dark">Clear Fields</button>
                 </form>
             </div>
         </div>
