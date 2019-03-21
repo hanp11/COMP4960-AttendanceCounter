@@ -46,9 +46,19 @@ module.exports = {
 
             db.query(deleteTimeQuery, (err, result) => {
                 if (err) {
-                    return res.status(500).send(err);
+                    let query = "SELECT * FROM `TimePoint`";
+                    db.query(query, (err, result) => {
+                        if (err) {
+                            res.redirect('/');
+                        }
+                        res.render('deletetime.ejs', {
+                            title: "Delete Time Point"
+                            ,time: result
+                            ,message: 'Error, Time Point is being used by a Session'
+                        });
+                    });
                 }
-                let query = "SELECT * FROM `TimePoint`";
+                query = "SELECT * FROM `TimePoint`";
                 db.query(query, (err, result) => {
                     if (err) {
                         res.redirect('/');

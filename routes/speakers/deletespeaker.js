@@ -23,7 +23,17 @@ module.exports = {
 
             db.query(deleteSpeakerQuery, (err, result) => {
                 if (err) {
-                    return res.status(500).send(err);
+                    let query = "SELECT * FROM `Speaker`";
+                    db.query(query, (err, result) => {
+                        if (err) {
+                            res.redirect('/');
+                        }
+                        res.render('deletespeaker.ejs', {
+                            title: "Delete Room"
+                            ,speaker: result
+                            ,message: 'Error, Speaker is being used by a Session'
+                        });
+                    });
                 }
                 let query = "SELECT * FROM `Speaker`";
                 db.query(query, (err, result) => {
