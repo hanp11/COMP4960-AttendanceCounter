@@ -12,14 +12,28 @@ These instructions will get you a copy of the project up and running on your loc
 * [Git Bash](https://git-scm.com/downloads) - Install link to gitbash
 (installation and running virtualenv will be easier from gitbash)
 
-* [Python Install](https://realpython.com/installing-python/#windows) - Install Python 3.x and Pip
-Verify Python Install
+* [Node Install](https://nodejs.org/en/download/) - 
+Verify Node Install
 ```
-python --version
+node --version
 ```
-Verify Pip Install
+Verify npm Install
 ```
-pip --version
+npm --version
+```
+* [XAMPP Install](https://www.apachefriends.org/download.html) - (7.1.27)
+Once Downloaded, Start
+```
+Apache,
+MySQL
+```
+Go to 
+```
+http://localhost/phpmyadmin/index.php
+```
+Click SQL Tab at Top, and copy contents from MySQL.txt in this directory
+```
+Paste contents into SQL Tab
 ```
 
 ### Installing
@@ -32,33 +46,16 @@ Step 1.) Clone project
 git clone https://github.com/hanp11/COMP4960-AttendanceCounter.git
 ```
 Step 2.) Install Requirements
+```
+npm install express express-fileupload body-parser mysql ejs req-flash --save
+```
+If done correctly you should now be able to run the Node Server
 
-```
-pip install -r requirements.txt
-```
-Step 3.) Activate Virtualenv
+## Running the Node Server
 
+From Git Bash in top level of 
 ```
-source COMP4960/Scripts/activate
-```
-You should see
-```
-(COMP4960)
-User@Computer MINGW64 ~/Programming/COMP4960-AttendanceCounter (branch_name)
-$
-```
-Step 4.) Verify Django Install
-
-```
-python -m django --version
-```
-If done correctly you should now be able to run the Django Server
-
-## Running the Django Server
-
-From 
-```
-COMP4960-AttendanceCounter/django_project
+/COMP4960-AttendanceCounter/
 ```
 run
 ```
@@ -67,18 +64,18 @@ nodemon app.js
 
 ## Project Structure 
 
-HTML + Javascript
+HTML are .esj files
 ```
-COMP4960-AttendanceCounter/django_project/boston_code_camp/templates/boston_code_camp
+COMP4960-AttendanceCounter/views/*.esj
 ```
-CSS
+Server code with SQL are .js files
 ```
-COMP4960-AttendanceCounter/django_project/boston_code_camp/static/boston_code_camp
+COMP4960-AttendanceCounter/views/*.js
 ```
 
 ## Built With
 
-* [Django](https://www.djangoproject.com/) - The backend framework used
+* [Node](https://nodejs.org/) - The backend framework used
 * [Bootstrap](https://getbootstrap.com/) - The CSS Stylesheet
 * [MySql](https://www.mysql.com/) - Database server
 
