@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<% include ../partials/header.ejs %>
+        <div>
+            <a class="button_horizontal" href="/addroom">Add | </a>      
+            <a class="button_horizontal" href="/editroom">Edit |</a>
+            <a class="button_horizontal" href="/deleteroom">Delete</a>
+        </div>
+        <div id="menuTabsContent" class="tab-content">
+            <div class="tab-pane fade show active" id="rooms" role="tabpanel">
+            <div class="container">
+                    <% if (message != '') { %>
+                        <p class="text-center text-danger"><%= message %></p>
+                    <% } %>
+                    <form class="delete-Room-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <select name="room_dropdown" id="room-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <% room.forEach((room, deleteroom) => { %>
+                                        <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
+                                    <% }) %>
+                                </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary float-right">Delete Room</button>
+                    </form>
+                </div>
+
+        </div>
+    </main>
+    <script>
+        $('#editable-select').editableSelect();
+    </script>
+  </body>
+</html>

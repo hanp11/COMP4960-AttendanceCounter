@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<% include ../partials/header.ejs %>
+        <div>
+            <a class="button_horizontal" href="/addsession">Add | </a>      
+            <a class="button_horizontal" href="/editsession">Edit |</a>
+            <a class="button_horizontal" href="/deletesession">Delete</a>
+        </div>
+        <div id="menuTabsContent" class="tab-content">
+            <div class="tab-pane fade show active" id="sessions" role="tabpanel">
+            <div class="container">
+                    <% if (message != '') { %>
+                        <p class="text-center text-danger"><%= message %></p>
+                    <% } %>
+                    <form class="delete-Sessions-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <select name="session_dropdown" id="session-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <% session.forEach((session, deletesession) => { %>
+                                        <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
+                                    <% }) %>
+                                </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary float-right">Delete Session</button>
+                    </form>
+                </div>
+
+        </div>
+    </main>
+    <script>
+        $('#editable-select').editableSelect();
+    </script>
+  </body>
+</html>

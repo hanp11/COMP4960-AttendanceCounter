@@ -62,7 +62,7 @@ COMP4960-AttendanceCounter/django_project
 ```
 run
 ```
-python manage.py runserver
+nodemon app.js
 ```
 
 ## Project Structure 
