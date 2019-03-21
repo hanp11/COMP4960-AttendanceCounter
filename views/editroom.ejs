@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<% include ../partials/header.ejs %>
+        <div>
+            <a class="button_horizontal" href="/addroom">Add | </a>      
+            <a class="button_horizontal" href="/editroom">Edit |</a>
+            <a class="button_horizontal" href="/deleteroom">Delete</a>
+        </div>
+        <div id="menuTabsContent" class="tab-content">
+            <div class="tab-pane fade show active" id="rooms" role="tabpanel">
+            <div class="container">
+                    <% if (message != '') { %>
+                        <p class="text-center text-danger"><%= message %></p>
+                    <% } %>
+                    <form class="edit-Room-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <select name="room_dropdown" id="room-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <% room.forEach((room, editroom) => { %>
+                                        <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
+                                    <% }) %>
+                                </select>
+                            <!-- <script>
+                            var sel = document.getElementById("editable-select");
+                            var text= sel.options[sel.selectedIndex].text;
+                            console.log(text)
+                            </script> -->
+                            <div class="form-group col-md-4">
+                                <label>Room Name</label>&nbsp;
+                                <input type="text" class="form-control" name="room_name" id="room-name" placeholder="Room Name" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Capacity</label>&nbsp;
+                                <!-- bug, unable to remove required from capacity_id -->
+                                <input type="text" class="form-control" name="capacity_id" id="capacity-id" placeholder="Capacity" >
+                            </div>
+                        
+                            
+                           
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary float-right">Edit Room</button>
+                    </form>
+                </div>
+
+        </div>
+    </main>
+    <script>
+        $('#editable-select').editableSelect();
+    </script>
+  </body>
+</html>

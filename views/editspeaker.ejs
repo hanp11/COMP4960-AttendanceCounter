@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<% include ../partials/header.ejs %>
+        <div>
+            <a class="button_horizontal" href="/addspeaker">Add | </a>      
+            <a class="button_horizontal" href="/editspeaker">Edit |</a>
+            <a class="button_horizontal" href="/deletespeaker">Delete</a>
+        </div>
+        <div id="menuTabsContent" class="tab-content">
+            <div class="tab-pane fade show active" id="speaker" role="tabpanel">
+            <div class="container">
+                    <% if (message != '') { %>
+                        <p class="text-center text-danger"><%= message %></p>
+                    <% } %>
+                    <form class="edit-Speaker-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <select name="speaker_dropdown" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <% speaker.forEach((speaker, editspeaker) => { %>
+                                        <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
+                                    <% }) %>
+                            </select>
+                            <div class="form-group col-md-4">
+                                    <label>First Name</label>&nbsp;
+                                    <input type="text" class="form-control" name="first_name" id="first-name" placeholder="First Name" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Last Name</label>&nbsp;
+                                    <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Last Name" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label>Email</label>&nbsp;
+                                        <input type="text" class="form-control" name="email" id="email-id" placeholder="Email" required>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right">Edit Speaker</button>
+                    </form>
+                </div>
+
+        </div>
+    </main>
+    <script>
+        $('#editable-select').editableSelect();
+    </script>
+  </body>
+</html>

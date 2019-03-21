@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<% include ../partials/header.ejs %>
+        <div>
+            <a class="button_horizontal" href="/addtime">Add | </a>      
+            <a class="button_horizontal" href="/edittime">Edit |</a>
+            <a class="button_horizontal" href="/deletetime">Delete</a>
+        </div>
+        <div id="menuTabsContent" class="tab-content">
+            <div class="tab-pane fade show active" id="time" role="tabpanel">
+            <div class="container">
+                    <% if (message != '') { %>
+                        <p class="text-center text-danger"><%= message %></p>
+                    <% } %>
+                    <form class="delete-Time-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <label>Existing Times : </label> 
+                            <select name="exisiting_time_dropdown" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <% time.forEach((time, edittime) => { %>
+                                        <% 
+                                        start_time = time.TimePoint_Start;
+                                        end_time = time.TimePoint_End;
+                                        start_time_split = start_time.split(":")
+                                        end_time_split = end_time.split(":")
+                                        if(start_time > 12){
+                                            start_time = parseInt(start_time) - 12;
+                                            start_time = "0"+start_time.toString() + ":"+ start_time_split[1] + ":00:PM"
+                                        }
+                                        else{
+                                            start_time = start_time + ":AM"
+                                        }
+                                        if( parseInt(end_time) > 12){
+                                            end_time = parseInt(end_time) - 12;
+                                            end_time = "0"+end_time.toString() + ":"+ end_time_split[1] + ":00:PM"
+                                        }
+                                        else{
+                                            end_time = end_time + ":AM"
+                                        }
+                                        %>
+                                        <option name="exisiting_time_dropdown" id="time-dropdown"><%= start_time+"-"+end_time %></option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary float-right">Delete Time</button>
+                    </form>
+                </div>
+
+        </div>
+    </main>
+    <script>
+        $('#editable-select').editableSelect();
+    </script>
+  </body>
+</html>

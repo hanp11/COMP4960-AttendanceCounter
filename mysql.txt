@@ -1,0 +1,51 @@
+DROP DATABASE boston_code_camp;
+CREATE DATABASE boston_code_camp;
+
+Drop table if exists TimePoint;
+Drop table if exists Room;
+Drop table if exists Speaker;
+Drop table if exists Session;
+
+CREATE TABLE TimePoint(
+TimePointID    INT AUTO_INCREMENT,
+TimePoint_Start TIME NOT NULL,
+TimePoint_End    TIME NOT NULL,
+CONSTRAINT TimePoint_PK
+    PRIMARY KEY (TimePointID)
+);
+
+CREATE TABLE Room(
+RoomID        INT AUTO_INCREMENT,
+RoomName    VARCHAR(15) NOT NULL,
+Capacity    INT,
+CONSTRAINT Room_PK
+    PRIMARY KEY (RoomID)
+);
+
+CREATE TABLE Speaker(
+SpeakerID    INT AUTO_INCREMENT,
+FirstName    VARCHAR(15) NOT NULL,
+LastName    VARCHAR(15) NOT NULL,
+Email        VARCHAR(35) NOT NULL,
+CONSTRAINT Speaker_PK
+    PRIMARY KEY (SpeakerID)
+);
+
+CREATE TABLE Session(
+SessionID    INT AUTO_INCREMENT,
+TimePointID    INT NOT NULL,
+RoomID        INT NOT NULL,
+SpeakerID    INT NOT NULL,
+Title        VARCHAR(35) NOT NULL,
+CONSTRAINT Session_PK
+    PRIMARY KEY (SessionID),
+CONSTRAINT Session_TimePoint_FK
+    FOREIGN KEY (TimePointID)
+    REFERENCES TimePoint(TimePointID),
+CONSTRAINT Session_Room_FK
+    FOREIGN KEY (RoomID)
+    REFERENCES Room(RoomID),
+CONSTRAINT Session_Speaker_FK
+    FOREIGN KEY (SpeakerID)
+    REFERENCES Speaker(SpeakerID)
+);
