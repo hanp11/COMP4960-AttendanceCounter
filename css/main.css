@@ -37,12 +37,11 @@ h2 {
 .nav-tabs {
     font-family: Robo+Slab;
     margin-bottom: 0;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 0;
     background-color: #5e2860;
     padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .nav-tabs > li > a{
@@ -54,6 +53,14 @@ h2 {
 .nav-tabs > li > a:hover{
     background-color: #FFF;
     color: #000;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #5e2860;
+}
+
+.nav-pills .nav-link{
+    color: #5e2860;
 }
 
 .tab-content {
@@ -96,4 +103,31 @@ button {
     font-family: serif;
     padding: 10px 0px 0px 0px;
     height: 40px;
+}
+
+#welcome{
+    padding-top: 50px;
+    text-align: center;
+}
+
+.submit{
+    background-color: #22c14a;
+    border-color: #22c14a;
+}
+
+.submit:hover{
+    background-color:white;
+    border-color: #22c14a;
+    color:#22c14a;
+}
+
+.clear{
+    background-color: #b5b5b5;
+    border-color:#b5b5b5;
+}
+
+.clear:hover{
+    background-color: white;
+    border-color:#b5b5b5;
+    color: #b5b5b5
 }

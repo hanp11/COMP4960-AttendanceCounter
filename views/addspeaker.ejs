@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-US">
         <% include ../partials/header.ejs %>
+        <ul id="menuTabs" class="nav nav-tabs nav-fill" role="tablist">
+            <li class="nav-item">
+                <a id="rooms-tab" class="nav-link" href="addroom" >Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a id="speakers-tab" class="nav-link active" href="addspeaker" >Speakers</a>
+            </li>
+            <li class="nav-item">
+                <a id="timeSlots-tab" class="nav-link" href="addtime" >Time Slots</a>
+            </li>
+            <li class="nav-item">
+                <a id="sessions-tab" class="nav-link" href="addsession" >Sessions</a>
+            </li>
+        </ul>
 
         
         <div>
@@ -36,8 +50,5 @@
 
         </div>
     </main>
-    <script>
-        $('#editable-select').editableSelect();
-    </script>
   </body>
 </html>

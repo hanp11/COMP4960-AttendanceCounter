@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en-US">
         <% include ../partials/header.ejs %>
-
+        <ul id="menuTabs" class="nav nav-tabs nav-fill" role="tablist">
+            <li class="nav-item">
+                <a id="rooms-tab" class="nav-link active" href="/addroom">Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a id="speakers-tab" class="nav-link" href="/addspeaker">Speakers</a>
+            </li>
+            <li class="nav-item">
+                <a id="timeSlots-tab" class="nav-link" href="/addtime">Time Slots</a>
+            </li>
+            <li class="nav-item">
+                <a id="sessions-tab" class="nav-link" href="/addsession">Sessions</a>
+            </li>
+        </ul>
         
-        <div>
-            <a class="button_horizontal" href="/addroom">Add | </a>      
-            <a class="button_horizontal" href="/editroom">Edit |</a>
-            <a class="button_horizontal" href="/deleteroom">Delete</a>
-        </div>
+
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="rooms" role="tabpanel">
+                    <ul class="nav nav-pills nav-fill">
+                            <li class="nav-item">
+                              <a class="nav-link active" href="addroom">Add Room</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="editroom">Edit Room</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="deleteroom">Delete Room</a>
+                            </li>
+                    
+                          </ul>
             <div class="container">
                     <% if (message != '') { %>
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
-                    <form class="add-Room-form" action="" method="post" enctype="multipart/form-data">
+                    <form class="add-Room-form" method="post" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>Room Name</label>&nbsp;
@@ -22,24 +43,16 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Capacity</label>&nbsp;
-                                <input type="text" class="form-control" name="capacity_id" id="capacity-id" placeholder="Capacity" required>
+                                <input type="number" class="form-control" name="capacity_id" id="capacity-id" placeholder="Capacity" min="0">
                             </div>
-                            <!-- <label>Room Name</label>&nbsp;
-                            <select id="editable-select" style="border-color: #ced4da; border-width: 1px;">
-                                <% room.forEach((room, addroom) => { %>
-                                    <option><%= room.RoomName %></option>
-                                <% }) %>
-                            </select> -->
                         </div>
                         
-                        <button type="submit" class="btn btn-primary float-right">Add Room</button>
+                        <button type="submit" class="btn btn-primary submit">Add Room</button>
+                        <button type="reset" class="btn btn-primary clear" >Clear Fields</button>
                     </form>
                 </div>
 
         </div>
     </main>
-    <script>
-        $('#editable-select').editableSelect();
-    </script>
   </body>
 </html>
