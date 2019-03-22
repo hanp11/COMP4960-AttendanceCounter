@@ -55,12 +55,18 @@ h2 {
     color: #000;
 }
 
+
 .nav-pills .nav-link.active {
     background-color: #5e2860;
 }
 
 .nav-pills .nav-link{
     color: #5e2860;
+}
+
+.nav-pills .nav-link:hover{
+    color: #4a4d51;
+    background-color: #ddd;
 }
 
 .tab-content {
@@ -122,12 +128,56 @@ button {
 }
 
 .clear{
-    background-color: #b5b5b5;
-    border-color:#b5b5b5;
+    background-color: #4a4d51;
+    border-color:#4a4d51;
 }
 
 .clear:hover{
     background-color: white;
-    border-color:#b5b5b5;
-    color: #b5b5b5
+    border-color:#4a4d51;
+    color: #4a4d51;
+}
+
+form{
+    text-align: center;
+}
+
+.formTable{
+    display: inline-table;
+    width: 80%;
+    text-align: center;
+}
+
+.formTable td{
+    margin:20px;
+}
+
+button{
+    margin-top:30px;
+}
+
+.dropdown{
+    display:inline-block;
+    width:50%;
+    font-size:120%;
+}
+
+.hiddenFields{
+    visibility: hidden;
+}
+
+.delete{
+    background-color: crimson;
+    border-color:crimson;
+}
+
+.delete:hover{
+    background-color:white;
+    border-color:crimson;
+    color:crimson;
+}
+
+.text-danger{
+    margin:20px;
+    font-size:150%;
 }

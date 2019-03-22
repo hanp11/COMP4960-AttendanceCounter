@@ -18,15 +18,18 @@
         </ul>
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="rooms" role="tabpanel">
-                    <ul class="nav nav-pills nav-fill">
+                    
+                <h1>Rooms</h1>
+                
+                <ul class="nav nav-pills nav-fill">
                             <li class="nav-item">
-                              <a class="nav-link" href="addroom">Add Room</a>
+                              <a class="nav-link" href="addroom">Add</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="editroom">Edit Room</a>
+                              <a class="nav-link" href="editroom">Edit</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link active" href="deleteroom">Delete Room</a>
+                              <a class="nav-link active" href="deleteroom">Delete</a>
                             </li>
                     
                           </ul>
@@ -35,15 +38,16 @@
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
                     <form class="delete-Room-form" action="" method="post" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <select name="room_dropdown" id="room-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                            <label>Select a room to delete:</label><br/>
+                            <select name="room_dropdown" id="room-dropdown" onchange="showFields()"" style="border-color: #ced4da; border-width: 1px;">
+                                    <option value="" disabled selected>-Select a Room-</option>
                                     <% room.forEach((room, deleteroom) => { %>
                                         <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
                                     <% }) %>
                                 </select>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary float-right">Delete Room</button>
+                        <button type="submit" class="btn btn-primary delete hiddenFields">Delete Room</button>
                     </form>
                 </div>
 
