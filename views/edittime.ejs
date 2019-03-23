@@ -2,22 +2,46 @@
 <html lang="en-US">
 
 <% include ../partials/header.ejs %>
-        <div>
-            <a class="button_horizontal" href="/addtime">Add | </a>      
-            <a class="button_horizontal" href="/edittime">Edit |</a>
-            <a class="button_horizontal" href="/deletetime">Delete</a>
-        </div>
+        <ul id="menuTabs" class="nav nav-tabs nav-fill" role="tablist">
+            <li class="nav-item">
+                <a id="rooms-tab" class="nav-link" href="addroom" >Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a id="speakers-tab" class="nav-link" href="addspeaker" >Speakers</a>
+            </li>
+            <li class="nav-item">
+                <a id="timeSlots-tab" class="nav-link active" href="addtime" >Time Slots</a>
+            </li>
+            <li class="nav-item">
+                <a id="sessions-tab" class="nav-link" href="addsession" >Sessions</a>
+            </li>
+        </ul>
+        
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="time" role="tabpanel">
+                    <h1>Time Slots</h1>
+                    <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link" href="addtime">Add</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="edittime">Edit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="deletetime">Delete</a>
+                            </li>
+                            
+                        </ul>
             <div class="container">
                     <% if (message != '') { %>
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
                     <form class="add-Time-form" action="" method="post" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <label>Existing Times : </label> 
-                            <select name="exisiting_time_dropdown" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    <% time.forEach((time, edittime) => { %>
+                        <div class="form-row formTable">
+                            <label>Select a time slot to edit: </label><br/>
+                            <select name="exisiting_time_dropdown" class="dropdown" onchange="showFields()" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <option value="" disabled selected>-Select a Time Slot-</option>
+                                <% time.forEach((time, edittime) => { %>
                                         <% 
                                         start_time = time.TimePoint_Start;
                                         end_time = time.TimePoint_End;
@@ -25,14 +49,14 @@
                                         end_time_split = end_time.split(":")
                                         if(start_time > 12){
                                             start_time = parseInt(start_time) - 12;
-                                            start_time = "0"+start_time.toString() + ":"+ start_time_split[1] + ":00:PM"
+                                            start_time = "0"+start_time.toString() + ":"+ start_time_split[1] + "00:PM"
                                         }
                                         else{
                                             start_time = start_time + ":AM"
                                         }
                                         if( parseInt(end_time) > 12){
                                             end_time = parseInt(end_time) - 12;
-                                            end_time = "0"+end_time.toString() + ":"+ end_time_split[1] + ":00:PM"
+                                            end_time = "0"+end_time.toString() + ":"+ end_time_split[1] + "00:PM"
                                         }
                                         else{
                                             end_time = end_time + ":AM"
@@ -41,6 +65,7 @@
                                         <option name="exisiting_time_dropdown" id="time-dropdown"><%= start_time+"-"+end_time %></option>
                                     <% }) %>
                             </select>
+                            <div class="hiddenFields">
                             <label>New Start Time : </label> 
                             <select name="start_hour_dropdown" id="start_hour_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="start_hour_dropdown" id="start_hour_dropdown">1</option>
@@ -69,7 +94,6 @@
                                 <option name="start_am_pm_dropdown" id="start_am_pm_dropdown">PM</option>
                                     
                             </select>
-                            <label>  </label>
                             <Label>New End Time : </Label>
                             <select name="end_hour_dropdown" id="end_hour_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="end_hour_dropdown" id="end_hour_dropdown">1</option>
@@ -96,14 +120,15 @@
                                 <option name="end_am_pm_dropdown" id="end_am_pm_dropdown">PM</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary float-right">Edit Time</button>
+                        <div class="form-row hiddenFields formTable">
+                        <button type="submit" class="btn btn-primary submit">Edit Room</button>
+                        <button type="reset" class="btn btn-primary clear ">Clear Fields</button>  
+                        </div>
+                    
                     </form>
                 </div>
 
         </div>
     </main>
-    <script>
-        $('#editable-select').editableSelect();
-    </script>
   </body>
 </html>

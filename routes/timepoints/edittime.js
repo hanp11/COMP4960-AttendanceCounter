@@ -9,7 +9,7 @@ module.exports = {
                 res.redirect('/');
             }
             res.render('edittime.ejs', {
-                title: "Edit Time"
+                title: "Edit Time Slot"
                 ,time: result
                 ,message: ''
             });
@@ -70,9 +70,9 @@ module.exports = {
                         res.redirect('/');
                     }
                     res.render('edittime.ejs', {
-                        title: "Edit Room"
+                        title: "Edit Time Slot"
                         ,time: result
-                        ,message: 'Time Point already exists'
+                        ,message: 'Time Slot already exists'
                     });
                 });
                 
@@ -91,9 +91,9 @@ module.exports = {
                             res.redirect('/');
                         }
                         res.render('edittime.ejs', {
-                            title: "Edit Time"
+                            title: "Edit Time Slot"
                             ,time: result
-                            ,message: 'Time Edited'
+                            ,message: 'Time Slot Edited'
                         });
                     });
                 });

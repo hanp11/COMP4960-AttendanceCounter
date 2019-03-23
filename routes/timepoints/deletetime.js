@@ -9,7 +9,7 @@ module.exports = {
                 res.redirect('/');
             }
             res.render('deletetime.ejs', {
-                title: "Delete Time Point"
+                title: "Delete Time Slot"
                 ,time: result
                 ,message: ''
             });
@@ -54,7 +54,7 @@ module.exports = {
                         res.render('deletetime.ejs', {
                             title: "Delete Time Point"
                             ,time: result
-                            ,message: 'Error, Time Point is being used by a Session'
+                            ,message: 'Error, Time Slot is being used by a Session'
                         });
                     });
                 }
@@ -64,9 +64,9 @@ module.exports = {
                         res.redirect('/');
                     }
                     res.render('deletetime.ejs', {
-                        title: "Delete Time Point"
+                        title: "Delete Time Slot"
                         ,time: result
-                        ,message: 'Time Deleted'
+                        ,message: 'Time Slot Deleted'
                     });
                 });
             });

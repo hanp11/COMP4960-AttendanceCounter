@@ -1,0 +1,203 @@
+.navbar {
+    height: 40px;
+    background-color: #5e2860;
+}
+
+#siteName {
+    font-family: Raleway;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+#container {
+    width: 100%;
+    margin: 0 auto;
+}
+.banner-img {
+    width: 100%;
+}
+
+#menuItems {
+    font-family: Robo+Slab;
+    font-size: 17px;
+}
+
+h1 {
+    font-family: Oswald;
+}
+
+h2 {
+    font-family: Raleway;
+}
+
+.nav-tabs {
+    font-family: Robo+Slab;
+    margin-bottom: 0;
+    margin-top: 0;
+    background-color: #5e2860;
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.nav-tabs > li > a{
+    border: medium none;
+    border-radius: 0;
+    color:#FFF;
+}
+
+.nav-tabs > li > a:hover{
+    background-color: #FFF;
+    color: #000;
+}
+
+
+.nav-pills .nav-link.active {
+    background-color: #5e2860;
+}
+
+.nav-pills .nav-link{
+    color: #5e2860;
+}
+
+.nav-pills .nav-link:hover{
+    color: #4a4d51;
+    background-color: #ddd;
+}
+
+.tab-content {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.tab-pane {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px 5px 5px;
+    padding: 20px 50px 30px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.navbar-brand {
+    margin-right: 0;
+}
+
+label {
+    font-size: 18px;
+    padding: 20px 5px 20px 50px;
+}
+
+button {
+    margin: 10px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #feda6a;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-family: serif;
+    padding: 10px 0px 0px 0px;
+    height: 40px;
+}
+
+#welcome{
+    padding-top: 50px;
+    text-align: center;
+}
+
+.submit{
+    background-color: #22c14a;
+    border-color: #22c14a;
+}
+
+.submit:hover{
+    background-color:white;
+    border-color: #22c14a;
+    color:#22c14a;
+}
+
+.clear{
+    background-color: #4a4d51;
+    border-color:#4a4d51;
+}
+
+.clear:hover{
+    background-color: white;
+    border-color:#4a4d51;
+    color: #4a4d51;
+}
+
+form{
+    text-align: center;
+}
+
+.formTable{
+    display: inline-table;
+    width: 90%;
+    text-align: center;
+}
+
+.formTable td{
+    margin:20px;
+}
+
+button{
+    margin-top:30px;
+}
+
+.dropdown{
+    display:inline;
+    width:50%;
+    font-size:120%;
+}
+
+.hiddenFields{
+    visibility: hidden;
+}
+
+.delete{
+    background-color: crimson;
+    border-color:crimson;
+}
+
+.delete:hover{
+    background-color:white;
+    border-color:crimson;
+    color:crimson;
+}
+
+.text-danger{
+    margin:20px;
+    font-size:150%;
+}
+
+.timeDropdown{
+    height: 50px;
+}
+
+.nav-pills{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#session-name{
+    width:50%;
+    display: inline-block;
+}
+
+table select{
+    display: inline;
+    width: 90%;
+}

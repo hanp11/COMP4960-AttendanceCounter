@@ -44,6 +44,9 @@ db.connect((err) => {
 });
 global.db = db;
 
+//include css
+app.use(express.static('css'));
+
 // configure middleware
 app.set('port', process.env.port || port); // set express to use this port
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view

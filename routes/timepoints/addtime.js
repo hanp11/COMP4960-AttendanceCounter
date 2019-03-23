@@ -9,7 +9,7 @@ module.exports = {
                 res.redirect('/');
             }
         res.render('addtime.ejs', {
-            title: "Add Time Point"
+            title: "Add Time Slot"
             ,message: ''
             ,time: result
             });
@@ -44,10 +44,10 @@ module.exports = {
                 return res.status(500).send(err);
             }
             if (result.length > 0) {
-                message = 'Time Point already exists';
+                message = 'Time Slot already exists';
                 res.render('addtime.ejs', {
                     message,
-                    title: "Add Time Point"
+                    title: "Add Time Slot"
                 });
             } else {
                 // send the time details to the database
@@ -64,8 +64,8 @@ module.exports = {
                             res.redirect('/');
                         }
                     res.render('addtime.ejs', {
-                        title: "Add Time Point"
-                        ,message: 'Time Added'
+                        title: "Add Time Slot"
+                        ,message: 'Time Slot Added'
                         ,time: result
                         });
                     });

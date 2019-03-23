@@ -2,34 +2,58 @@
 <html lang="en-US">
 
 <% include ../partials/header.ejs %>
-        <div>
-            <a class="button_horizontal" href="/addroom">Add | </a>      
-            <a class="button_horizontal" href="/editroom">Edit |</a>
-            <a class="button_horizontal" href="/deleteroom">Delete</a>
-        </div>
+        <ul id="menuTabs" class="nav nav-tabs nav-fill" role="tablist">
+            <li class="nav-item">
+                <a id="rooms-tab" class="nav-link active" href="addroom" >Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a id="speakers-tab" class="nav-link" href="addspeaker" >Speakers</a>
+            </li>
+            <li class="nav-item">
+                <a id="timeSlots-tab" class="nav-link" href="addtime" >Time Slots</a>
+            </li>
+            <li class="nav-item">
+                <a id="sessions-tab" class="nav-link" href="addsession" >Sessions</a>
+            </li>
+        </ul>
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="rooms" role="tabpanel">
-            <div class="container">
+                    
+                <h1>Rooms</h1>
+                
+                <ul class="nav nav-pills">
+                            <li class="nav-item">
+                              <a class="nav-link" href="addroom">Add</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="editroom">Edit</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link active" href="deleteroom">Delete</a>
+                            </li>
+                    
+                </ul>
+                <div class="container">
                     <% if (message != '') { %>
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
-                    <form class="delete-Room-form" action="" method="post" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <select name="room_dropdown" id="room-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                    <form class="delete-Room-form formTable" action="" method="post" enctype="multipart/form-data">
+                            <label>Select a room to delete:</label><br/>
+                            <p style="text-align: center">
+                            <select name="room_dropdown" class="dropdown" id="room-dropdown" onchange="showFields()"" style="border-color: #ced4da; border-width: 1px;">
+                                    <option value="" disabled selected>-Select a Room-</option>
                                     <% room.forEach((room, deleteroom) => { %>
                                         <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
                                     <% }) %>
-                                </select>
+                            </select>
+                            </p>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary float-right">Delete Room</button>
+                        <button type="submit" class="btn btn-primary delete hiddenFields">Delete Room</button>
                     </form>
                 </div>
 
         </div>
     </main>
-    <script>
-        $('#editable-select').editableSelect();
-    </script>
   </body>
 </html>
