@@ -16,22 +16,30 @@
             </li>
         </ul>
 
-        
-        <div>
-            <a class="button_horizontal" href="/addtime">Add | </a>      
-            <a class="button_horizontal" href="/edittime">Edit |</a>
-            <a class="button_horizontal" href="/deletetime">Delete</a>
-        </div>
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="time" role="tabpanel">
+            <h1>Time Slots</h1>
+        
+            <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="addtime">Add</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="edittime">Edit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="deletetime">Delete</a>
+                        </li>
+                
+            </ul>
             <div class="container">
                     <% if (message != '') { %>
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
                     <form class="add-Time-form" action="" method="post" enctype="multipart/form-data">
-                        <div class="form-row">
+                        <div class="form-row formTable">
                             <label>Start Time : </label> 
-                            <select name="start_hour_dropdown" id="start_hour_dropdown" style="border-color: #ced4da; border-width: 1px;">
+                            <select name="start_hour_dropdown" class="timeDropdown" id="start_hour_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="start_hour_dropdown" id="start_hour_dropdown">1</option>
                                 <option name="start_hour_dropdown" id="start_hour_dropdown">2</option>
                                 <option name="start_hour_dropdown" id="start_hour_dropdown">3</option>
@@ -46,21 +54,21 @@
                                 <option name="start_hour_dropdown" id="start_hour_dropdown">12</option>
                             </select>
 
-                            <select name="start_minute_dropdown" id="start_minute_dropdown" style="border-color: #ced4da; border-width: 1px;">
+                            <select name="start_minute_dropdown" class="timeDropdown" id="start_minute_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="start_minute_dropdown" id="start_minute_dropdown">:00</option>
                                 <option name="start_minute_dropdown" id="start_minute_dropdown">:15</option>
                                 <option name="start_minute_dropdown" id="start_minute_dropdown">:30</option>
                                 <option name="start_minute_dropdown" id="start_minute_dropdown">:45</option>
                             </select>
 
-                            <select name="start_am_pm_dropdown" id="start_am_pm_dropdown" style="border-color: #ced4da; border-width: 1px;">
+                            <select name="start_am_pm_dropdown" class="timeDropdown" id="start_am_pm_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="start_am_pm_dropdown" id="start_am_pm_dropdown">AM</option>
                                 <option name="start_am_pm_dropdown" id="start_am_pm_dropdown">PM</option>
                                     
                             </select>
-                            <label>  </label>
+                            
                             <Label>End Time : </Label>
-                            <select name="end_hour_dropdown" id="end_hour_dropdown" style="border-color: #ced4da; border-width: 1px;">
+                            <select name="end_hour_dropdown" class="timeDropdown" id="end_hour_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="end_hour_dropdown" id="end_hour_dropdown">1</option>
                                 <option name="end_hour_dropdown" id="end_hour_dropdown">2</option>
                                 <option name="end_hour_dropdown" id="end_hour_dropdown">3</option>
@@ -74,19 +82,22 @@
                                 <option name="end_hour_dropdown" id="end_hour_dropdown">11</option>
                                 <option name="end_hour_dropdown" id="end_hour_dropdown">12</option>
                             </select>
-                            <select name="end_minute_dropdown" id="end_minute_dropdown" style="border-color: #ced4da; border-width: 1px;">
+                            <select name="end_minute_dropdown" class="timeDropdown" id="end_minute_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="end_minute_dropdown" id="end_minute_dropdown">:00</option>
                                 <option name="end_minute_dropdown" id="end_minute_dropdown">:15</option>
                                 <option name="end_minute_dropdown" id="end_minute_dropdown">:30</option>
                                 <option name="end_minute_dropdown" id="end_minute_dropdown">:45</option>
                             </select>
-                            <select name="end_am_pm_dropdown" id="end_am_pm_dropdown" style="border-color: #ced4da; border-width: 1px;">
+                            <select name="end_am_pm_dropdown" class="timeDropdown" id="end_am_pm_dropdown" style="border-color: #ced4da; border-width: 1px;">
                                 <option name="end_am_pm_dropdown" id="end_am_pm_dropdown">AM</option>
                                 <option name="end_am_pm_dropdown" id="end_am_pm_dropdown">PM</option>
                             </select>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary float-right">Add Time</button>
+                        <div class="form-row formTable">
+                            <button type="submit" class="btn btn-primary submit">Add Time</button>
+                            <button type="reset" class="btn btn-primary clear">Clear Fields</button>
+                        </div>
                     </form>
                 </div>
 

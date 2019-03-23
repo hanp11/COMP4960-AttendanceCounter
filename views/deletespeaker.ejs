@@ -16,28 +16,39 @@
                 <a id="sessions-tab" class="nav-link" href="addsession" >Sessions</a>
             </li>
         </ul>
-        <div>
-            <a class="button_horizontal" href="/addspeaker">Add | </a>      
-            <a class="button_horizontal" href="/editspeaker">Edit |</a>
-            <a class="button_horizontal" href="/deletespeaker">Delete</a>
-        </div>
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="speaker" role="tabpanel">
+            <h1>Speakers</h1>
+        
+            <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="addspeaker">Add</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="editspeaker">Edit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="deletespeaker">Delete</a>
+                        </li>
+                
+            </ul>
             <div class="container">
                     <% if (message != '') { %>
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
                     <form class="delete-Speaker-form" action="" method="post" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <select name="speaker_dropdown" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                        <label>Select a speaker to delete:</label><br/>
+                        <div class="form-row formTable">
+                            <select name="speaker_dropdown" class="dropdown" onchange="showFields()" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <option value="" disabled selected>-Select a Speaker-</option>
                                     <% speaker.forEach((speaker, deletespeaker) => { %>
                                         <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
                                     <% }) %>
                                 </select>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary float-right">Delete Speaker</button>
-                    </form>
+                        <div class="form-row formTable">
+                            <button type="submit" class="btn btn-primary delete hiddenFields">Delete Speaker</button>                    </form>
+                        </div>
                 </div>
 
         </div>

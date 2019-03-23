@@ -16,46 +16,72 @@
                 <a id="sessions-tab" class="nav-link active" href="addsession" >Sessions</a>
             </li>
         </ul>
-        <div>
-            <a class="button_horizontal" href="/addsession">Add | </a>      
-            <a class="button_horizontal" href="/editsession">Edit |</a>
-            <a class="button_horizontal" href="/deletesession">Delete</a>
-        </div>
+    
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="session" role="tabpanel">
+                    <h1>Sessions</h1>
+        
+                    <ul class="nav nav-pills">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="addsession">Add</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="editsession">Edit</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="deletesession">Delete</a>
+                                </li>
+                        
+                    </ul>
             <div class="container">
                     <% if (message != '') { %>
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
                     <form class="edit-Session-form" action="" method="post" enctype="multipart/form-data">
-                        <div class="form-column">
-                            <div class="form-group col-md-4">
-                            <label>Exisiting Session Title</label>&nbsp;<br />
-                            <select name="session_dropdown" id="title-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    <% session.forEach((session, editsession) => { %>
-                                        <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
-                                    <% }) %>
-                            </select>
-                            <br/><label>New Session Title</label>&nbsp;
-                            <input type="text" class="form-control" name="session_name" id="session-name" placeholder="Session Title" required>
-                            
-                            <label>Session Room</label>&nbsp;<br />
-                            <select name="room_dropdown" id="room-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    
-                                    <% room.forEach((room, editroom) => { %>
-                                        <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
-                                    <% }) %>
-                            </select>
-                            <br /><label>Session Speaker</label>&nbsp;<br />
-                            <select name="speaker_dropdown" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    <% speaker.forEach((speaker, editspeaker) => { %>
-                                        <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
-                                    <% }) %>
-                            </select>
-                            <br /><label>Session Time</label>&nbsp;<br />
-                            <select name="exisiting_time_dropdown" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    <% time.forEach((time, edittime) => { %>
-                                        <% 
+                        <table class="formTable">
+                            <tr>
+                                <td colspan="3">
+                                    <label>Select an existing session to edit:</label>&nbsp;<br />
+                                    <select name="session_dropdown" class="dropdown" onchange="showFields()" id="title-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                            <option value="" disabled selected>-Select a Session-</option>
+                                            <% session.forEach((session, editsession) => { %>
+                                                <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
+                                            <% }) %>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="hiddenFields">
+                                <td colspan="3">
+                                    <label>New Session Title</label><br/>
+                                    <input type="text" class="form-control" name="session_name" id="session-name" placeholder="Session Title" required>
+                                </td>
+                            </tr>
+                            <tr class="hiddenFields">
+                                <td>
+                                    <label>Session Room</label><br/>
+                                     <select name="room_dropdown" id="room-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                        <option value="" disabled selected>-Select a Room-</option>
+                                         <% room.forEach((room, editroom) => { %>
+                                             <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
+                                         <% }) %>
+                                    </select>
+                                </td>
+                                <td>    
+                                    <label>Session Speaker</label>&nbsp;
+                                     <select name="speaker_dropdown" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                        <option value="" disabled selected>-Select a Speaker-</option>
+                                        <% speaker.forEach((speaker, editspeaker) => { %>
+                                             <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
+                                         <% }) %>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label>Session Time</label>&nbsp;
+                                    <select name="exisiting_time_dropdown" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                        <option value="" disabled selected>-Select a Time Slot-</option>
+
+                                        <% time.forEach((time, edittime) => { %>
+                                         <% 
                                         start_time = time.TimePoint_Start;
                                         end_time = time.TimePoint_End;
                                         start_time_split = start_time.split(":")
@@ -77,10 +103,16 @@
                                         %>
                                         <option name="exisiting_time_dropdown" id="time-dropdown"><%= start_time+"-"+end_time %></option>
                                     <% }) %>
-                            </select>
-                        </div>   
-                        </div>
-                        <button type="submit" class="btn btn-primary float-right">Edit Session</button>
+                                    </select>
+                                </td>
+                                </tr>
+                                <tr class="hiddenFields">
+                                    <td colspan="3">
+                                            <button type="submit" class="btn btn-primary submit">Edit Session</button>
+                                            <button type="reset" class="btn btn-primary clear ">Clear Fields</button>                
+                                    </td>
+                                </tr>
+                    </table>
                     </form>
                 </div>
 

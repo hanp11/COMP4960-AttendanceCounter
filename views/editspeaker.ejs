@@ -20,7 +20,7 @@
             <div class="tab-pane fade show active" id="speaker" role="tabpanel">
                     <h1>Speakers</h1>
                 
-                    <ul class="nav nav-pills nav-fill">
+                    <ul class="nav nav-pills">
                                 <li class="nav-item">
                                   <a class="nav-link" href="addspeaker">Add</a>
                                 </li>
@@ -41,14 +41,12 @@
                         <div class="form-row formTable">
                             <label>Select a speaker to edit:</label>
                         </div>
-                        <p style="text-align: center;">
                             <select name="speaker_dropdown" class="dropdown" onchange="showFields()" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
                                     <option value="" disabled selected>-Select a Speaker-</option>
                                     <% speaker.forEach((speaker, editspeaker) => { %>
                                         <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
                                     <% }) %>
                             </select>
-                        </p>
                         <div class="form-row hiddenFields ">
                             <div class="form-group col-md-4">
                                     <label>First Name</label>&nbsp;

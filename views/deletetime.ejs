@@ -16,22 +16,32 @@
                 <a id="sessions-tab" class="nav-link" href="addsession" >Sessions</a>
             </li>
         </ul>
-        <div>
-            <a class="button_horizontal" href="/addtime">Add | </a>      
-            <a class="button_horizontal" href="/edittime">Edit |</a>
-            <a class="button_horizontal" href="/deletetime">Delete</a>
-        </div>
         <div id="menuTabsContent" class="tab-content">
             <div class="tab-pane fade show active" id="time" role="tabpanel">
+                    <h1>Time Slots</h1>
+        
+                    <ul class="nav nav-pills">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="addtime">Add</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="edittime">Edit</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="deletetime">Delete</a>
+                                </li>
+                        
+                    </ul>
             <div class="container">
                     <% if (message != '') { %>
                         <p class="text-center text-danger"><%= message %></p>
                     <% } %>
                     <form class="delete-Time-form" action="" method="post" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <label>Existing Times : </label> 
-                            <select name="exisiting_time_dropdown" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    <% time.forEach((time, edittime) => { %>
+                        <div class="form-row formTable">
+                            <label>Select a time slot to delete: </label><br/>
+                            <select name="exisiting_time_dropdown" class="dropdown" onchange="showFields()" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
+                                    <option value="" disabled selected>-Select a Time Slot-</option>
+                                <% time.forEach((time, edittime) => { %>
                                         <% 
                                         start_time = time.TimePoint_Start;
                                         end_time = time.TimePoint_End;
@@ -57,7 +67,7 @@
                             </select>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary float-right">Delete Time</button>
+                        <button type="submit" class="btn btn-primary delete hiddenFields">Delete Time Slot</button>
                     </form>
                 </div>
 

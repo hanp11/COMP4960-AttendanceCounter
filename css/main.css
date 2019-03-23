@@ -144,7 +144,7 @@ form{
 
 .formTable{
     display: inline-table;
-    width: 80%;
+    width: 90%;
     text-align: center;
 }
 
@@ -157,7 +157,7 @@ button{
 }
 
 .dropdown{
-    display:inline-block;
+    display:inline;
     width:50%;
     font-size:120%;
 }
@@ -180,4 +180,24 @@ button{
 .text-danger{
     margin:20px;
     font-size:150%;
+}
+
+.timeDropdown{
+    height: 50px;
+}
+
+.nav-pills{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#session-name{
+    width:50%;
+    display: inline-block;
+}
+
+table select{
+    display: inline;
+    width: 90%;
 }
