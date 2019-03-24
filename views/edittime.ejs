@@ -49,14 +49,14 @@
                                         end_time_split = end_time.split(":")
                                         if(parseInt(start_time) > 12){
                                             start_time = parseInt(start_time) - 12;
-                                            start_time = "0"+start_time.toString() + ":"+ start_time_split[1] + "00:PM"
+                                            start_time = "0"+start_time.toString() + ":"+ start_time_split[1] + ":00:PM"
                                         }
                                         else{
                                             start_time = start_time + ":AM"
                                         }
                                         if( parseInt(end_time) > 12){
                                             end_time = parseInt(end_time) - 12;
-                                            end_time = "0"+end_time.toString() + ":"+ end_time_split[1] + "00:PM"
+                                            end_time = "0"+end_time.toString() + ":"+ end_time_split[1] + ":00:PM"
                                         }
                                         else{
                                             end_time = end_time + ":AM"
