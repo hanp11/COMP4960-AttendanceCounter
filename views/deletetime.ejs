@@ -47,7 +47,7 @@
                                         end_time = time.TimePoint_End;
                                         start_time_split = start_time.split(":")
                                         end_time_split = end_time.split(":")
-                                        if(start_time > 12){
+                                        if(parseInt(start_time) > 12){
                                             start_time = parseInt(start_time) - 12;
                                             start_time = "0"+start_time.toString() + ":"+ start_time_split[1] + ":00:PM"
                                         }
