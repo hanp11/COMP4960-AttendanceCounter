@@ -117,14 +117,14 @@ button {
 }
 
 .submit{
-    background-color: #22c14a;
-    border-color: #22c14a;
+    background-color: #049109;
+    border-color: #049109;
 }
 
 .submit:hover{
     background-color:white;
-    border-color: #22c14a;
-    color:#22c14a;
+    border-color: #049109;
+    color:#049109;
 }
 
 .clear{
