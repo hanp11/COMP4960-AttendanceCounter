@@ -5,6 +5,7 @@ Drop table if exists TimePoint;
 Drop table if exists Room;
 Drop table if exists Speaker;
 Drop table if exists Session;
+Drop table if exists Counts;
 
 CREATE TABLE TimePoint(
 TimePointID    INT AUTO_INCREMENT,
@@ -48,4 +49,17 @@ CONSTRAINT Session_Room_FK
 CONSTRAINT Session_Speaker_FK
     FOREIGN KEY (SpeakerID)
     REFERENCES Speaker(SpeakerID)
+);
+
+CREATE TABLE Counts(
+SessionID	INT NOT NULL,
+StartCount	INT,
+MidCount	INT,
+FinalCount	INT,
+CONSTRAINT Counts_PK
+	PRIMARY KEY (SessionID),
+CONSTRAINT Counts_FK
+	FOREIGN KEY (SessionID)
+	REFERENCES Session(SessionID)
+
 );
