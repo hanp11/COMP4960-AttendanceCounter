@@ -33,7 +33,7 @@ const db = mysql.createConnection ({
     multipleStatements: true,
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'boston_code_camp'
 });
 
@@ -90,8 +90,8 @@ app.post('/addsession', addSession);
 app.post('/editsession', editSession);
 app.post('/deletesession', deleteSession);
 // Counts
-app.get('/addCounts', addCountsPage);
-app.post('/addCounts', addCounts);
+app.get('/addcounts', addCountsPage);
+app.post('/addcounts', addCounts);
 
 // set the app to listen on the port
 app.listen(port, () => {
