@@ -13,11 +13,6 @@
 
         <h1>Counts</h1>
 
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a class="nav-link active" href="addcount">Add</a>
-            </li>
-        </ul>
         <div class="container">
             <% if (message != '') { %>
             <p class="text-center text-danger"><%= message %></p>
@@ -25,16 +20,32 @@
             <form class="add-Counts-form" method="post" enctype="multipart/form-data">
                 <table class="formTable">
                     <tr>
-                        <td>
-                            <label>Room Name</label>
-                            <input type="text" class="form-control" name="room_name" id="room-name"
-                                placeholder="Room Name" required>
+                        <td colspan="3">
+                            <label>Select an existing session to add counts:</label>&nbsp;<br />
+                            <select name="session_dropdown" class="dropdown" onchange="showFields()" id="title-dropdown"
+                                style="border-color: #ced4da; border-width: 1px;">
+                                <option value="" disabled selected>-Select a Session-</option>
+                                <% session.forEach((session, editsession) => { %>
+                                <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
+                                <% }) %>
+                            </select>
                         </td>
-                        <td></td>
+                    </tr>
+                    <tr>
                         <td>
-                            <label>Count</label>
-                            <input type="number" class="form-control" name="count_id" id="count-id"
-                                placeholder="Count" min="0">
+                            <label>Start Count</label>
+                            <input type="number" class="form-control" name="start-count" id="start-count"
+                                placeholder="Count" required>
+                        </td>
+                        <td>
+                            <label>Middle Count</label>
+                            <input type="number" class="form-control" name="middle-count" id="middle-count" placeholder="Count"
+                                min="0">
+                        </td>
+                        <td>
+                            <label>Final Count</label>
+                            <input type="number" class="form-control" name="final-count" id="final-count" placeholder="Count"
+                                min="0">
                         </td>
                     </tr>
                     <tr>
