@@ -2,39 +2,34 @@ const fs = require('fs');
 
 module.exports = {
     addCountsPage: (req, res) => {
-        let query = "SELECT * FROM `room`;SELECT * FROM `speaker`;SELECT * FROM `timepoint`;SELECT * FROM `session`;SELECT * FROM `counts`"; // query database to get all the Rooms
+        let query = "SELECT * FROM `session`; "// query database to get all the Rooms
 
         // execute query
-        db.query(query, [1, 2], (err, result) => {
+        db.query(query, (err, result) => {
             if (err) {
                 res.redirect('/');
             }
             res.render('addcounts.ejs', {
                 title: "Add Counts"
                 , message: ''
-                , room: result[0]
-                , speaker: result[1]
-                , time: result[2]
-                , session: result[3]
-                , counts: result[4]
+                , session: result
             });
         });
     },
 
     addCounts: (req, res) => {
-        let message = '';
         let session_name = req.body.session_dropdown;
         let start_count = req.body.start_count;
         let middle_count = req.body.middle_count;
         let final_count = req.body.final_count;
         let sID = "SELECT SessionID FROM `session` WHERE Title = '" + session_name + "';";
         
-        db.query(sID, [1, 2], (err, result) => {
+        db.query(sID, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
             else{
-                let session = JSON.stringify(result[0]).split(":")[1].split("}")[0];
+                let session = JSON.stringify(result).split(":")[1].split("}")[0];
                 
                 let existingSessionQuery =  "SELECT 'SessionID' FROM `counts` WHERE SessionID = '" + session + "'";
                 console.log(existingSessionQuery);
@@ -50,21 +45,17 @@ module.exports = {
                             if (err) {
                                 return res.status(500).send(err);
                             }
-                            query = "SELECT * FROM `room`;SELECT * FROM `speaker`;SELECT * FROM `timepoint`;SELECT * FROM `session`;SELECT * FROM 'counts'"; // query database to get all the Rooms
+                            query = "SELECT * FROM `session`; "; // query database to get all the Rooms
 
                             // execute query
-                            db.query(query, [1, 2], (err, result) => {
+                            db.query(query, (err, result) => {
                                 if (err) {
                                     res.redirect('/');
                                 }
                                 res.render('addcounts.ejs', {
                                     title: "Add Counts"
-                                    ,message: 'Count Added'
-                                    ,room: result[0]
-                                    ,speaker: result[1]
-                                    ,time: result[2]
-                                    ,session: result[3]
-                                    ,counts: result[4]
+                                    ,message: 'Count Updated'
+                                    ,session: result
                                     
                                 });
                             });
@@ -78,18 +69,17 @@ module.exports = {
                                 return res.status(500).send(err);
                             }
 
-                            query = "SELECT * FROM `counts`"; // query database to get all the Rooms
+                            query = "SELECT * FROM `session`; "; // query database to get all the Rooms
 
                             // execute query
-                            db.query(query, [1, 2], (err, result) => {
+                            db.query(query, (err, result) => {
                                 if (err) {
                                     res.redirect('/');
                                 }
                                 res.render('addcounts.ejs', {
                                     title: "Add Counts"
-                                    , message: 'Counts Added'
-                                    , room: result
-                                    
+                                    , message: 'Count Added'
+                                    , session: result
                                 });
                             });
                         });
