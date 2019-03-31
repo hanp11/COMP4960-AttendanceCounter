@@ -22,7 +22,7 @@
                     <tr>
                         <td colspan="3">
                             <label>Select an existing session to add counts:</label>&nbsp;<br />
-                            <select name="session_dropdown" class="dropdown" onchange="showFields()" id="title-dropdown"
+                            <select name="session_dropdown" class="dropdown" onchange="showFields()" id="session_dropdown"
                                 style="border-color: #ced4da; border-width: 1px;">
                                 <option value="" disabled selected>-Select a Session-</option>
                                 <% session.forEach((session, editsession) => { %>
@@ -34,18 +34,18 @@
                     <tr>
                         <td>
                             <label>Start Count</label>
-                            <input type="number" class="form-control" name="start-count" id="start-count"
-                                placeholder="Count" required>
+                            <input type="number" class="form-control" name="start_count" id="start_count"
+                                placeholder="Count"  min="0" required>
                         </td>
                         <td>
                             <label>Middle Count</label>
-                            <input type="number" class="form-control" name="middle-count" id="middle-count" placeholder="Count"
-                                min="0">
+                            <input type="number" class="form-control" name="middle_count" id="middle_count" placeholder="Count"
+                                min="0" required>
                         </td>
                         <td>
                             <label>Final Count</label>
-                            <input type="number" class="form-control" name="final-count" id="final-count" placeholder="Count"
-                                min="0">
+                            <input type="number" class="form-control" name="final_count" id="final_count" placeholder="Count"
+                                min="0" required>
                         </td>
                     </tr>
                     <tr>
@@ -62,3 +62,4 @@
     </body>
 
 </html>
+© 2019 GitHub, Inc.
