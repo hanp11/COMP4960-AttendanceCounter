@@ -6,6 +6,8 @@ Drop table if exists Room;
 Drop table if exists Speaker;
 Drop table if exists Session;
 Drop table if exists Counts;
+Drop table if exists Logins;
+Drop table if exists DailyPassword;
 
 CREATE TABLE TimePoint(
 TimePointID    INT AUTO_INCREMENT,
@@ -62,4 +64,13 @@ CONSTRAINT Counts_FK
 	FOREIGN KEY (SessionID)
 	REFERENCES Session(SessionID)
 
+);
+
+CREATE TABLE Logins(
+Email	VARCHAR(35) NOT NULL,
+AccessTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE DailyPassword(
+Password VARCHAR(35) NOT NULL
 );
