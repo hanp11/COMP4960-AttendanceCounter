@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  border-radius: 15px;
+  background-color: #22c14a;	
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #22c14a;
+  cursor: pointer;
+  width: auto;
+}
+button:hover {
+  background-color:white;
+    border-color: #22c14a;
+    color:#22c14a;
+}
+
+.container {
+  padding: 16px;
+}
+
+</style>
+</head>
+<html lang="en-US">
+        <% include ../partials/header.ejs %>
+        <div id="welcome">
+            <h1>Welcome Database Administrator!</h1>
+            <h3>Please enter credentials</h3>
+		<form action="/action_page.php">
+  		<div class="container">
+  		<label for="uname" style="padding-left:5px;"><b>Username</b></label>
+   		<input type="text" placeholder="Enter Username" name="uname" required>
+		<label for="psw" style="padding-left:5px;"><b>Password</b></label>
+    		<input type="password" placeholder="Enter Password" name="psw" required>
+    		<button type="submit">Login</button>
+	</div>
+</form>
+</body>
+</html>
