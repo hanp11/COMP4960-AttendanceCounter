@@ -39,8 +39,7 @@
                     <form class="delete-Sessions-form" action="" method="post" enctype="multipart/form-data">
                         <div class="form-row formTable">
                             <label>Select a session to delete:</label></br>
-                            <select name="session_dropdown" class="dropdown" onchange="showFields()" id="session-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                <option value="" disabled selected>-Select a Session-</option>
+                            <select name="session_dropdown" class="selectpicker" onchange="showFields()" id="session-dropdown" data-width="500px" title="-Select a Session-">
                                 <% session.forEach((session, deletesession) => { %>
                                         <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
                                     <% }) %>

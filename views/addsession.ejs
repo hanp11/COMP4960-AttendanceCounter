@@ -46,27 +46,24 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Session Room</label>
-                                    <select name="room_dropdown" id="room-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                            <option value="" disabled selected>-Select a Room-</option>
+                                    <label>Session Room</label><br>
+                                    <select name="room_dropdown" class="selectpicker" id="room-dropdown" data-width="200px" title="-Select a Room-">
                                             <% room.forEach((room, editroom) => { %>
                                                 <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
                                             <% }) %>
                                     </select>
                                 </td>
                                 <td>
-                                    <label>Session Speaker</label>
-                                    <select name="speaker_dropdown" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                            <option value="" disabled selected>-Select a Speaker-</option>
+                                    <label>Session Speaker</label><br>
+                                    <select name="speaker_dropdown" class="selectpicker" id="speaker-dropdown" data-width="400px" title="-Select Speaker(s)-" multiple>
                                             <% speaker.forEach((speaker, editspeaker) => { %>
                                                 <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
                                             <% }) %>
                                     </select>
                                 </td>
                                 <td>                        
-                                    <label>Session Time</label>
-                                    <select name="exisiting_time_dropdown" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                            <option value="" disabled selected>-Select a time Slot-</option>
+                                    <label>Session Time</label><br>
+                                    <select name="exisiting_time_dropdown" class="selectpicker" id="exisiting_time-dropdown" data-width="200px" title="-Select a time Slot-">
                                             <% time.forEach((time, edittime) => { %>
                                                 <% 
                                                 start_time = time.TimePoint_Start;

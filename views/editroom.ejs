@@ -44,8 +44,7 @@
                             <tr>
                                 <td colspan="3">
                                     <label>Select a room to edit:</label><br/>
-                                    <select  name="room_dropdown" id="room-dropdown" class="dropdown" onchange="showFields()" style="border-color: #ced4da; border-width: 1px;" >
-                                        <option value="" disabled selected>-Select a Room-</option>
+                                    <select name="room_dropdown" id="room-dropdown" class="selectpicker" onchange="showFields()" data-width="500px" title="-Select a Room-">
                                          <% room.forEach((room, editroom) => { %>
                                         <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
                                         <% }) %>

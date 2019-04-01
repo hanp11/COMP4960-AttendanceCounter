@@ -90,7 +90,7 @@ h2 {
 
 label {
     font-size: 18px;
-    padding: 20px 5px 20px 50px;
+    padding: 20px 5px 20px 5px;
 }
 
 button {
@@ -152,14 +152,8 @@ form{
     margin:20px;
 }
 
-button{
-    margin-top:30px;
-}
-
-.dropdown{
-    display:inline;
-    width:50%;
-    font-size:120%;
+.btn-primary{
+    margin:30px;
 }
 
 .hiddenFields{
@@ -201,3 +195,4 @@ table select{
     display: inline;
     width: 90%;
 }
+

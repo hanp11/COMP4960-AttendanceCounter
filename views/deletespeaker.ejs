@@ -39,8 +39,7 @@
                     <form class="delete-Speaker-form" action="" method="post" enctype="multipart/form-data">
                         <label>Select a speaker to delete:</label><br/>
                         <div class="form-row formTable">
-                            <select name="speaker_dropdown" class="dropdown" onchange="showFields()" id="speaker-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    <option value="" disabled selected>-Select a Speaker-</option>
+                            <select name="speaker_dropdown" class="selectpicker" onchange="showFields()" id="speaker-dropdown" data-width="500px" title="-Select a Speaker-">
                                     <% speaker.forEach((speaker, deletespeaker) => { %>
                                         <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
                                     <% }) %>

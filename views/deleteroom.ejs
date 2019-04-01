@@ -40,8 +40,7 @@
                     <form class="delete-Room-form formTable" action="" method="post" enctype="multipart/form-data">
                             <label>Select a room to delete:</label><br/>
                             <p style="text-align: center">
-                            <select name="room_dropdown" class="dropdown" id="room-dropdown" onchange="showFields()"" style="border-color: #ced4da; border-width: 1px;">
-                                    <option value="" disabled selected>-Select a Room-</option>
+                            <select name="room_dropdown" class="selectpicker" id="room-dropdown" onchange="showFields()" data-width="500px" title="-Select a Room-">
                                     <% room.forEach((room, deleteroom) => { %>
                                         <option name="room_dropdown" id="room-dropdown"><%= room.RoomName %></option>
                                     <% }) %>
