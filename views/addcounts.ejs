@@ -1,65 +1,50 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <% include ../partials/header.ejs %>
-<ul id="menuTabs" class="nav nav-tabs nav-fill" role="tablist">
-    <li class="nav-item">
-        <a id="counts-tab" class="nav-link active" href="/addcounts">Counts</a>
-    </li>
-</ul>
 
+<div>
+    <h1 style="text-align:center;font-family: Oswald;margin-top:30px;">Counts</h1>
 
-<div id="menuTabsContent" class="tab-content">
-    <div class="tab-pane fade show active" id="counts" role="tabpanel">
-
-        <h1>Counts</h1>
-
-        <div class="container">
-            <% if (message != '') { %>
-            <p class="text-center text-danger"><%= message %></p>
-            <% } %>
-            <form class="add-Counts-form" method="post" enctype="multipart/form-data">
-                <table class="formTable">
-                    <tr>
-                        <td colspan="3">
-                            <label>Select an existing session to add counts:</label>&nbsp;<br />
-                            <select name="session_dropdown" class="dropdown" onchange="showFields()" id="session_dropdown"
-                                style="border-color: #ced4da; border-width: 1px;">
-                                <option value="" disabled selected>-Select a Session-</option>
-                                <% session.forEach((session, editsession) => { %>
-                                <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
-                                <% }) %>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="hiddenFields">
-                        <td>
-                            <label>Start Count</label>
-                            <input type="number" class="form-control" name="start_count" id="start_count"
-                                placeholder="Count"  min="-1" value="-1">
-                        </td>
-                        <td>
-                            <label>Middle Count</label>
-                            <input type="number" class="form-control" name="middle_count" id="middle_count" placeholder="Count"
-                                min="-1" value="-1">
-                        </td>
-                        <td>
-                            <label>Final Count</label>
-                            <input type="number" class="form-control" name="final_count" id="final_count" placeholder="Count"
-                                min="-1" value="-1">
-                        </td>
-                    </tr>
-                    <tr class="hiddenFields">
-                        <td colspan="3">
-                            <button type="submit" class="btn btn-primary submit">Add Count</button>
-                            <button type="reset" class="btn btn-primary clear">Clear Fields</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-    </main>
-    </body>
+    <div class="container">
+        <% if (message != '') { %>
+        <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <form class="add-Counts-form" method="post" enctype="multipart/form-data">
+            <table class="formTable">
+                <tr>
+                    <td colspan="3">
+                        <label>Select an existing session to add counts:</label>&nbsp;<br />
+                        <select name="session_dropdown" class="selectpicker" onchange="showFields()" id="session_dropdown"
+                            style="border-color: #ced4da; border-width: 1px;" data-width="500px" title="-Select a Session-">
+                            <% session.forEach((session, editsession) => { %>
+                            <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
+                            <% }) %>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="hiddenFields">
+                    <td>
+                        <label>Start Count</label>
+                        <input type="number" class="form-control" name="start_count" id="start_count" placeholder="Count" min="-1" value="-1">
+                    </td>
+                    <td>
+                        <label>Middle Count</label>
+                        <input type="number" class="form-control" name="middle_count" id="middle_count" placeholder="Count" min="-1" value="-1">
+                    </td>
+                    <td>
+                        <label>Final Count</label>
+                        <input type="number" class="form-control" name="final_count" id="final_count" placeholder="Count" min="-1" value="-1">
+                    </td>
+                </tr>
+                <tr class="hiddenFields">
+                    <td colspan="3">
+                        <button type="submit" class="btn btn-primary submit">Add Count</button>
+                        <button type="reset" class="btn btn-primary clear">Clear Fields</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+</div>
+</body>
 
 </html>
-© 2019 GitHub, Inc.
