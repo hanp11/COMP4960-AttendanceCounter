@@ -53,18 +53,65 @@ module.exports = {
         let start_time = exisiting_start_hour+":"+exisiting_start_minute+":00";
         let end_time = exisiting_end_hour+":"+exisiting_end_minute+":00";
 
-        let KeyQuery = "SELECT RoomID FROM `room` WHERE RoomName = '" + room_name + "';SELECT SpeakerID FROM `Speaker` WHERE Email = '" + email + "';SELECT TimePointID FROM `timepoint` WHERE TimePoint_Start = '" + start_time + "' AND TimePoint_End = '" + end_time + "';";
+        let KeyQuery = "SELECT RoomID FROM `room` WHERE RoomName = '" + room_name + "';SELECT TimePointID FROM `timepoint` WHERE TimePoint_Start = '" + start_time + "' AND TimePoint_End = '" + end_time + "';";
+
+        var len = 0;
+        if (email.constructor == Array) {
+            for (var i = 0; i < email.length; i++) {
+                if (email[i] !== undefined) {
+                    len++;
+                }
+            }
+
+            for (var j = 0; j < len; j++) {
+                KeyQuery += "SELECT SpeakerID FROM`Speaker` WHERE Email = '" + email[j] + "';";
+            }
+        }
+        else {
+            KeyQuery += "SELECT SpeakerID FROM`Speaker` WHERE Email = '" + email + "';";
+        }
+
         db.query(KeyQuery, [1, 2], (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
             else{
                 let RoomId = JSON.stringify(result[0]).split(":")[1].split("}")[0];
-                let SpeakerID = JSON.stringify(result[1]).split(":")[1].split("}")[0];
-                let TimePointID = JSON.stringify(result[2]).split(":")[1].split("}")[0];
-                 //
-                if(old_title == new_title){
-                    let sameTitleQuery = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                let TimePointID = JSON.stringify(result[1]).split(":")[1].split("}")[0];
+                let SpeakerID = JSON.stringify(result[2]).split(":")[1].split("}")[0];
+                let SpeakerID2 = "";
+                let SpeakerID3 = "";
+                let SpeakerID4 = "";
+                let SpeakerID5 = "";
+                let sameTitleQuery = "";
+
+                if (old_title == new_title) {
+                    switch (len) {
+                        case 2:
+                            SpeakerID2 = JSON.stringify(result[3]).split(":")[1].split("}")[0];
+                            sameTitleQuery = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                            break;
+                        case 3:
+                            SpeakerID2 = JSON.stringify(result[3]).split(":")[1].split("}")[0];
+                            SpeakerID3 = JSON.stringify(result[4]).split(":")[1].split("}")[0];
+                            sameTitleQuery = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', SpeakerID3 = '" + SpeakerID3 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                            break;
+                        case 4:
+                            SpeakerID2 = JSON.stringify(result[3]).split(":")[1].split("}")[0];
+                            SpeakerID3 = JSON.stringify(result[4]).split(":")[1].split("}")[0];
+                            SpeakerID4 = JSON.stringify(result[5]).split(":")[1].split("}")[0];
+                            sameTitleQuery = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', SpeakerID3 = '" + SpeakerID3 + "', SpeakerID4 = '" + SpeakerID4 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                            break;
+                        case 5:
+                            SpeakerID2 = JSON.stringify(result[3]).split(":")[1].split("}")[0];
+                            SpeakerID3 = JSON.stringify(result[4]).split(":")[1].split("}")[0];
+                            SpeakerID4 = JSON.stringify(result[5]).split(":")[1].split("}")[0];
+                            SpeakerID5 = JSON.stringify(result[6]).split(":")[1].split("}")[0];
+                            sameTitleQuery = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', SpeakerID3 = '" + SpeakerID3 + "', SpeakerID4 = '" + SpeakerID4 + "', SpeakerID5 = '" + SpeakerID5 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                            break;
+                        default:
+                            sameTitleQuery = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                    }
                     console.log(sameTitleQuery)   
                     db.query(sameTitleQuery, (err, result) => {
                             if (err) {
@@ -88,8 +135,24 @@ module.exports = {
                             });
                         });
                 }
-                //
-                let existingSessionQuery =  "SELECT * FROM `Session` WHERE RoomID = '" + RoomId + "' AND SpeakerID = '"+SpeakerID+"' AND TimePointID = '"+TimePointID+"' AND Title = '"+new_title+"'";
+                
+                let existingSessionQuery = "";
+                switch (len) {
+                    case 2:
+                        existingSessionQuery = "SELECT * FROM `Session` WHERE RoomID = '" + RoomId + "' AND SpeakerID = '" + SpeakerID + "' AND SpeakerID2 = '" + SpeakerID2 + "' AND TimePointID = '" + TimePointID + "' AND Title = '" + new_title + "'";
+                        break;
+                    case 3:
+                        existingSessionQuery = "SELECT * FROM `Session` WHERE RoomID = '" + RoomId + "' AND SpeakerID = '" + SpeakerID + "' AND SpeakerID2 = '" + SpeakerID2 + "' AND SpeakerID3 = '" + SpeakerID3 + "' AND TimePointID = '" + TimePointID + "' AND Title = '" + new_title + "'";
+                        break;
+                    case 4:
+                        existingSessionQuery = "SELECT * FROM `Session` WHERE RoomID = '" + RoomId + "' AND SpeakerID = '" + SpeakerID + "' AND SpeakerID2 = '" + SpeakerID2 + "' AND SpeakerID3 = '" + SpeakerID3 + "' AND SpeakerID4 = '" + SpeakerID4 + "' AND TimePointID = '" + TimePointID + "' AND Title = '" + new_title + "'";
+                        break;
+                    case 5:
+                        existingSessionQuery = "SELECT * FROM `Session` WHERE RoomID = '" + RoomId + "' AND SpeakerID = '" + SpeakerID + "' AND SpeakerID2 = '" + SpeakerID2 + "' AND SpeakerID3 = '" + SpeakerID3 + "' AND SpeakerID4 = '" + SpeakerID4 + "' AND SpeakerID5 = '" + SpeakerID5 + "' AND TimePointID = '" + TimePointID + "' AND Title = '" + new_title + "'";
+                        break;
+                    default:
+                        existingSessionQuery = "SELECT * FROM `Session` WHERE RoomID = '" + RoomId + "' AND SpeakerID = '" + SpeakerID + "' AND TimePointID = '" + TimePointID + "' AND Title = '" + new_title + "'";
+                }
                 db.query(existingSessionQuery, (err, result) => {
                     if (err) {
                         return res.status(500).send(err);
@@ -113,7 +176,23 @@ module.exports = {
                         });
                     } else {
                         // send the room's details to the database
-                        let query = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                        let query = "";
+                        switch (len) {
+                            case 2:
+                                query = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                                break;
+                            case 3:
+                                query = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', SpeakerID3 = '" + SpeakerID3 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                                break;
+                            case 4:
+                                query = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', SpeakerID3 = '" + SpeakerID3 + "', SpeakerID4 = '" + SpeakerID4 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                                break;
+                            case 5:
+                                query = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', SpeakerID2 = '" + SpeakerID2 + "', SpeakerID3 = '" + SpeakerID3 + "', SpeakerID4 = '" + SpeakerID4 + "', SpeakerID5 = '" + SpeakerID5 + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                                break;
+                            default:
+                                query = "UPDATE Session SET RoomID = '" + RoomId + "', TimePointID = '" + TimePointID + "', SpeakerID = '" + SpeakerID + "', Title = '" + new_title + "' WHERE Title = '" + old_title + "'";
+                        }
                         console.log(query)
                         db.query(query, (err, result) => {
                             if (err) {

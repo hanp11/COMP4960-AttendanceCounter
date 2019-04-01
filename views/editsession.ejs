@@ -66,7 +66,7 @@
                                 </td>
                                 <td>    
                                     <label>Session Speaker</label>&nbsp;
-                                     <select name="speaker_dropdown" class="selectpicker" id="speaker-dropdown" data-width="400px" title="-Select Speaker(s)-" multiple>
+                                     <select name="speaker_dropdown" class="selectpicker" id="speaker-dropdown" data-width="400px" title="-Select Speaker(s)-" multiple data-max-options="5">
                                         <% speaker.forEach((speaker, editspeaker) => { %>
                                              <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
                                          <% }) %>
