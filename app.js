@@ -60,7 +60,7 @@ app.use(fileUpload()); // configure fileupload
 
 // routes for the app
 
-app.get('/', getHomePage);
+app.get('/index', getHomePage);
 // Rooms
 app.get('/addroom', addRoomPage);
 app.get('/editroom', editRoomPage);
@@ -90,7 +90,7 @@ app.post('/addsession', addSession);
 app.post('/editsession', editSession);
 app.post('/deletesession', deleteSession);
 // User Login
-app.get('/userLogin', userLoginPage);
+app.get('/', userLoginPage);
 app.post('/userLogin', userLogin);
 
 // set the app to listen on the port
