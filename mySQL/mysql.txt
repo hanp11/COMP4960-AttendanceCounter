@@ -34,9 +34,13 @@ CONSTRAINT Speaker_PK
 
 CREATE TABLE Session(
 SessionID    INT AUTO_INCREMENT,
-TimePointID    INT NOT NULL,
-RoomID        INT NOT NULL,
+TimePointID  INT NOT NULL,
+RoomID       INT NOT NULL,
 SpeakerID    INT NOT NULL,
+SpeakerID2   INT,
+SpeakerID3   INT,
+SpeakerID4   INT,
+SpeakerID5   INT,   
 Title        VARCHAR(35) NOT NULL,
 CONSTRAINT Session_PK
     PRIMARY KEY (SessionID),
@@ -48,6 +52,18 @@ CONSTRAINT Session_Room_FK
     REFERENCES Room(RoomID),
 CONSTRAINT Session_Speaker_FK
     FOREIGN KEY (SpeakerID)
+    REFERENCES Speaker(SpeakerID),
+CONSTRAINT Session_Speaker2_FK
+    FOREIGN KEY (SpeakerID2)
+    REFERENCES Speaker(SpeakerID),
+CONSTRAINT Session_Speaker3_FK
+    FOREIGN KEY (SpeakerID3)
+    REFERENCES Speaker(SpeakerID),
+CONSTRAINT Session_Speaker4_FK
+    FOREIGN KEY (SpeakerID4)
+    REFERENCES Speaker(SpeakerID),
+CONSTRAINT Session_Speaker5_FK
+    FOREIGN KEY (SpeakerID5)
     REFERENCES Speaker(SpeakerID)
 );
 
