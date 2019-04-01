@@ -22,6 +22,8 @@ const {deleteTimePage, deleteTime} = require('./routes/timepoints/deletetime');
 const {addSessionPage, addSession} = require('./routes/sessions/addsession');
 const {editSessionPage, editSession} = require('./routes/sessions/editsession');
 const {deleteSessionPage, deleteSession} = require('./routes/sessions/deletesession');
+//User Login
+const {userLoginPage, userLogin} = require('./routes/user/userLogin');
 //Counts
 const {addCountsPage, addCounts} = require('./routes/counts/addcounts');
 
@@ -33,7 +35,7 @@ const db = mysql.createConnection ({
     multipleStatements: true,
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'boston_code_camp'
 });
 
@@ -60,7 +62,7 @@ app.use(fileUpload()); // configure fileupload
 
 // routes for the app
 
-app.get('/', getHomePage);
+app.get('/index', getHomePage);
 // Rooms
 app.get('/addroom', addRoomPage);
 app.get('/editroom', editRoomPage);
@@ -89,6 +91,9 @@ app.get('/deletesession', deleteSessionPage);
 app.post('/addsession', addSession);
 app.post('/editsession', editSession);
 app.post('/deletesession', deleteSession);
+// User Login
+app.get('/', userLoginPage);
+app.post('/userLogin', userLogin);
 // Counts
 app.get('/addcounts', addCountsPage);
 app.post('/addcounts', addCounts);
