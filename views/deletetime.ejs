@@ -39,8 +39,7 @@
                     <form class="delete-Time-form" action="" method="post" enctype="multipart/form-data">
                         <div class="form-row formTable">
                             <label>Select a time slot to delete: </label><br/>
-                            <select name="exisiting_time_dropdown" class="dropdown" onchange="showFields()" id="exisiting_time-dropdown" style="border-color: #ced4da; border-width: 1px;">
-                                    <option value="" disabled selected>-Select a Time Slot-</option>
+                            <select name="exisiting_time_dropdown" class="selectpicker" onchange="showFields()" id="exisiting_time-dropdown" data-width="500px" title="-Select a Time Slot-">
                                 <% time.forEach((time, edittime) => { %>
                                         <% 
                                         start_time = time.TimePoint_Start;

@@ -35,7 +35,7 @@ const db = mysql.createConnection ({
     multipleStatements: true,
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '',
     database: 'boston_code_camp'
 });
 
