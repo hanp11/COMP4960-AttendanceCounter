@@ -24,6 +24,8 @@ const {editSessionPage, editSession} = require('./routes/sessions/editsession');
 const {deleteSessionPage, deleteSession} = require('./routes/sessions/deletesession');
 //User Login
 const {userLoginPage, userLogin} = require('./routes/user/userLogin');
+//Counts
+const {addCountsPage, addCounts} = require('./routes/counts/addcounts');
 
 const port = 5000;
 
@@ -92,6 +94,9 @@ app.post('/deletesession', deleteSession);
 // User Login
 app.get('/', userLoginPage);
 app.post('/userLogin', userLogin);
+// Counts
+app.get('/addcounts', addCountsPage);
+app.post('/addcounts', addCounts);
 
 // set the app to listen on the port
 app.listen(port, () => {
