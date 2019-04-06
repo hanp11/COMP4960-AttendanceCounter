@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<% include ../partials/header.ejs %>
+
+<div>
+    <h1 style="text-align:center;font-family: Oswald;margin-top:30px;">Counts</h1>
+
+    <div class="container">
+        <% if (message != '') { %>
+        <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <form class="view-Counts-form" method="post" enctype="multipart/form-data">
+            <table class="formTable">
+                <tr>
+                    <td colspan="3">
+                        <label>Select a session or a speaker::</label>&nbsp;<br />
+                    </td>
+                    <td>
+                        <select name="session_dropdown" class="selectpicker" onchange="showFields()" id="session_dropdown"
+                            style="border-color: #ced4da; border-width: 1px;" data-width="500px" title="-Select a Session-">
+                            <% session.forEach((session, editsession) => { %>
+                            <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
+                            <% }) %>
+                        </select>
+                        <select name="speaker_dropdown" class="selectpicker" onchange="showFields()" id="speaker-dropdown" data-width="500px" title="-Select a Speaker-">
+                            <% speaker.forEach((speaker, editspeaker) => { %>
+                                <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.FirstName + " " + speaker.LastName + " (" + speaker.Email + ") " %></option>
+                            <% }) %>
+                    </select>
+                    </td>
+                </tr>
+                <tr class="hiddenFields">
+                    <!--This is where we generate a table with the session counts. 
+                        If they pick a session we will only get back one row-->
+                    <!--If they pick a speaker, we list each session with their own counts-->
+                    <%for each session- print out the session name in one row, and three counts in next row%>
+                </tr>
+                <tr class="hiddenFields">
+                    <td colspan="3">
+                        <button type="submit" class="btn btn-primary submit">Add Count</button>
+                        <button type="reset" class="btn btn-primary clear">Clear Fields</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+</div>
+</body>
+
+</html>
