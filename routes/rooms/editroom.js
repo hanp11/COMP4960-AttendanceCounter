@@ -72,10 +72,10 @@ module.exports = {
                             if (err) {
                                 res.redirect('/');
                             }
-                        res.render('editroom.ejs', {
-                            title: "Edit Room"
-                            ,message: 'Room Edited'
-                            ,room: result
+                            res.render('editroom.ejs', {
+                                title: "Edit Room"
+                                ,message: 'Room Edited'
+                                ,room: result
                             });
                         });
                     });

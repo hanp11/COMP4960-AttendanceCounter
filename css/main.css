@@ -176,8 +176,9 @@ form{
     font-size:150%;
 }
 
-.timeDropdown{
-    height: 50px;
+.timeDropdown {
+    height: 24px;
+    margin: 2px;
 }
 
 .nav-pills{
