@@ -43,7 +43,7 @@
                         </div>
                             <select name="speaker_dropdown" class="selectpicker" onchange="showFields()" id="speaker-dropdown" data-width="500px" title="-Select a Speaker-">
                                     <% speaker.forEach((speaker, editspeaker) => { %>
-                                        <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.Email %></option>
+                                        <option name="speaker_dropdown" id="speaker-dropdown"><%= speaker.FirstName + " " + speaker.LastName + " (" + speaker.Email + ") " %></option>
                                     <% }) %>
                             </select>
                         <div class="form-row hiddenFields ">
