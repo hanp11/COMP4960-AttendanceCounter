@@ -72,6 +72,9 @@ SessionID	INT NOT NULL,
 StartCount	INT,
 MidCount	INT,
 FinalCount	INT,
+User_Name_Start VARCHAR(30),
+User_Name_Mid VARCHAR(30),
+User_Name_End VARCHAR(30),
 CONSTRAINT Counts_PK
 	PRIMARY KEY (SessionID),
 CONSTRAINT Counts_FK
