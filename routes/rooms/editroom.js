@@ -18,28 +18,34 @@ module.exports = {
     editRoom: (req, res) => {
         let old_room_name = req.body.room_dropdown;
         let room_name = req.body.room_name;
-        let capactity = req.body.capacity_id;
+        let capacity = 0;
+
+        if (req.body.capacity_id.trim()) {
+            // is empty or whitespace
+            capacity = req.body.capacity_id;
+        }
 
         let existingRoomQuery = "SELECT * FROM `room` WHERE RoomName = '" + room_name + "'";
         if(old_room_name == room_name){
-            let query = "UPDATE Room SET RoomName = '" + room_name + "', Capacity = " + capactity + " WHERE RoomName = '" + old_room_name + "'";
-                    db.query(query, (err, result) => {
-                        if (err) {
-                            return res.status(500).send(err);
-                        }
-                        query = "SELECT * FROM `room`"; // query database to get all the Rooms
-                        // execute query
-                        db.query(query, (err, result) => {
-                            if (err) {
-                                res.redirect('/');
-                            }
-                        res.render('editroom.ejs', {
-                            title: "Edit Room"
-                            ,message: 'Room Edited'
-                            ,room: result
-                            });
-                        });
+            let query = "UPDATE Room SET RoomName = '" + room_name + "', Capacity = " + capacity + " WHERE RoomName = '" + old_room_name + "'";
+            console.log(query);
+            db.query(query, (err, result) => {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+                query = "SELECT * FROM `room`"; // query database to get all the Rooms
+                // execute query
+                db.query(query, (err, result) => {
+                    if (err) {
+                        res.redirect('/');
+                    }
+                res.render('editroom.ejs', {
+                    title: "Edit Room"
+                    ,message: 'Room Edited'
+                    ,room: result
                     });
+                });
+            });
         }
         else{
             db.query(existingRoomQuery, (err, result) => {
@@ -61,7 +67,7 @@ module.exports = {
                     
                 } else {
                     // send the room's details to the database
-                    let query = "UPDATE Room SET RoomName = '" + room_name + "', Capacity = " + capactity + " WHERE RoomName = '" + old_room_name + "'";
+                    let query = "UPDATE Room SET RoomName = '" + room_name + "', Capacity = " + capacity + " WHERE RoomName = '" + old_room_name + "'";
                     db.query(query, (err, result) => {
                         if (err) {
                             return res.status(500).send(err);

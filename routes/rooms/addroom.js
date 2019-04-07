@@ -20,7 +20,12 @@ module.exports = {
 
         let message = '';
         let room_name = req.body.room_name;
-        let capactity = req.body.capacity_id;
+        let capacity = 0;
+
+        if (req.body.capacity_id.trim()) {
+            // is empty or whitespace
+            capacity = req.body.capacity_id;
+        }
 
         let existingRoomQuery = "SELECT * FROM `room` WHERE RoomName = '" + room_name + "'";
 
@@ -38,7 +43,7 @@ module.exports = {
             } else {
                 // send the room's details to the database
                 let query = "INSERT INTO `room` (RoomName, Capacity) VALUES ('" +
-                    room_name + "', '" + capactity +"')";
+                    room_name + "', '" + capacity +"')";
                 db.query(query, (err, result) => {
                     if (err) {
                         return res.status(500).send(err);
