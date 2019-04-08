@@ -1,8 +1,6 @@
-const fs = require('fs');
-
 module.exports = {
-    viewCountsSessionPage: (req, res) => {
-        let query = "SELECT * FROM `room`;SELECT * FROM `speaker`;SELECT * FROM `timepoint`;SELECT * FROM `session`"; // query database to get all the Rooms
+    getCountsSessionPage: (req, res) => {
+        let query = "SELECT session.Title, room.RoomName, timepoint.TimePoint_Start, timepoint.TimePoint_End, counts.StartCount, counts.MidCount, counts.FinalCount FROM session JOIN room ON session.RoomID = room.RoomID JOIN timepoint ON session.TimePointID = timepoint.TimePointID JOIN counts ON session.SessionID = counts.SessionID"; 
 
         // execute query
         db.query(query, [1, 2], (err, result) => {
@@ -10,18 +8,12 @@ module.exports = {
                 res.redirect('/');
             }
             else {
+
             }
             res.render('viewcounts_session.ejs', {
                 title: "View Counts"
-                , message: ''
-                , room: result[0]
-                , speaker: result[1]
-                , timepoint: result[2]
-                , session: result[3]
+                , counts: result
             });
         });
-    },
-
-    viewCountsSession: (req, res) => {
     },
 };
