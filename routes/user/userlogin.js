@@ -18,6 +18,19 @@ module.exports = {
         let password = req.body.password;
 
         if(password == jsoncontents.daily_password){
+
+            
+            var fileName = './username.json';
+            var file = require(fileName);
+
+            file.key = username;
+
+        fs.writeFile(fileName, JSON.stringify(file, null, 2), function (err) {
+        if (err) return console.log(err);
+            console.log(JSON.stringify(file, null, 2));
+            console.log('writing to ' + fileName);
+            });
+
             res.redirect('/addcounts');
         }
         else{
