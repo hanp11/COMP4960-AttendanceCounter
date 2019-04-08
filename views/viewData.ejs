@@ -1,5 +1,4 @@
 <div class="table-wrapper">
-    <p class="text-center">Go <a href="/addroom" >here</a> to add data.</p>
     <!-- Current Room Data -->
     <% if (room.length > 0) {%>
         <table class="table table-hovered">
@@ -91,6 +90,38 @@
                         <td><%= session.RoomID %></td>
                         <td><%= session.SpeakerID %></td>
                         <td><%= session.Title %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="text-center">No session found</p>
+    <% } %>
+
+    <!-- Current Counts Data -->
+    <% if (counts.length > 0) {%>
+        <table class="table table-hovered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">SessionID</th>
+                    <th scope="col">StartCount</th>
+                    <th scope="col">MidCount</th>
+                    <th scope="col">FinalCount</th>
+                    <th scope="col">User_Name_Start</th>
+                    <th scope="col">User_Name_Mid</th>
+                    <th scope="col">User_Name_End</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% counts.forEach((count, index) => { %>
+                    <tr>
+                        <td><%= count.SessionID %></td>
+                        <td><%= count.StartCount %></td>
+                        <td><%= count.MidCount %></td>
+                        <td><%= count.FinalCount %></td>
+                        <td><%= count.User_Name_Start %></td>
+                        <td><%= count.User_Name_Mid %></td>
+                        <td><%= count.User_Name_End %></td>
                     </tr>
                 <% }) %>
             </tbody>

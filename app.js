@@ -6,6 +6,8 @@ const path = require('path');
 const app = express();
 
 const {getHomePage} = require('./routes/index');
+
+const {getDataPage} = require('./routes/viewdata');
 //Room
 const {addRoomPage, addRoom} = require('./routes/rooms/addroom');
 const {editRoom, editRoomPage} = require('./routes/rooms/editroom');
@@ -61,6 +63,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 app.use(fileUpload()); // configure fileupload
 
 // routes for the app
+app.get('/viewdata', getDataPage);
 
 app.get('/index', getHomePage);
 // Rooms
