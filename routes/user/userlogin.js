@@ -18,11 +18,9 @@ module.exports = {
         let password = req.body.password;
 
         if(password == jsoncontents.daily_password){
-
             
             var fileName = './username.json';
             var file = require(fileName);
-
             file.name = username;
 
             fs.writeFile(fileName, JSON.stringify(file, null, 2), function (err) {
@@ -32,6 +30,7 @@ module.exports = {
             res.redirect('/addcounts');
         }
         else{
+            //need to add wrong password message
             res.redirect('/');
         }
     },
