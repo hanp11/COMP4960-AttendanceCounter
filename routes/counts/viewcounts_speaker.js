@@ -1,8 +1,6 @@
-const fs = require('fs');
-
 module.exports = {
-    viewCountsSpeakerPage: (req, res) => {
-        let query = "SELECT * FROM `room`;SELECT * FROM `speaker`;SELECT * FROM `timepoint`;SELECT * FROM `session`"; // query database to get all the Rooms
+    getCountsSpeakerPage: (req, res) => {
+        let query = "SELECT speaker.FirstName, speaker.LastName, speaker.Email, counts.StartCount, counts.MidCount, counts.FinalCount FROM speaker JOIN session ON session.SpeakerID = speaker.SpeakerID JOIN counts ON counts.SessionID = session.SessionID UNION SELECT speaker.FirstName, speaker.LastName, speaker.Email, counts.StartCount, counts.MidCount, counts.FinalCount FROM speaker JOIN session ON session.SpeakerID2 = speaker.SpeakerID JOIN counts ON counts.SessionID = session.SessionID UNION SELECT speaker.FirstName, speaker.LastName, speaker.Email, counts.StartCount, counts.MidCount, counts.FinalCount FROM speaker JOIN session ON session.SpeakerID3 = speaker.SpeakerID JOIN counts ON counts.SessionID = session.SessionID UNION SELECT speaker.FirstName, speaker.LastName, speaker.Email, counts.StartCount, counts.MidCount, counts.FinalCount FROM speaker JOIN session ON session.SpeakerID4 = speaker.SpeakerID JOIN counts ON counts.SessionID = session.SessionID UNION SELECT speaker.FirstName, speaker.LastName, speaker.Email, counts.StartCount, counts.MidCount, counts.FinalCount FROM speaker JOIN session ON session.SpeakerID5 = speaker.SpeakerID JOIN counts ON counts.SessionID = session.SessionID ORDER BY Email"; 
 
         // execute query
         db.query(query, [1, 2], (err, result) => {
@@ -10,18 +8,12 @@ module.exports = {
                 res.redirect('/');
             }
             else {
+
             }
             res.render('viewcounts_speaker.ejs', {
                 title: "View Counts"
-                , message: ''
-                , room: result[0]
-                , speaker: result[1]
-                , timepoint: result[2]
-                , session: result[3]
+                , counts: result
             });
         });
-    },
-
-    viewCountsSpeaker: (req, res) => {
     },
 };

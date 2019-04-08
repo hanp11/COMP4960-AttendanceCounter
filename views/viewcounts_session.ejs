@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<% include ../partials/header.ejs %>
+<% include ../partials/header1.ejs %>
 
 <div>
-    <h1 style="text-align:center;font-family: Oswald;margin-top:30px;">Counts</h1>
+    <h1 style="text-align:center;font-family: Oswald;margin-top:30px;">View Counts</h1>
 	<label style="display: block; text-align: center; line-height: 150%; padding-bottom: 0;">Select a session or a speaker:</label>&nbsp;<br />
 	<ul class="nav nav-pills" style="margin-top: 0;">
             <li class="nav-item">
@@ -14,29 +14,37 @@
             </li>       
     </ul>
     <div class="container">
-        <% if (message != '') { %>
-        <p class="text-center text-danger"><%= message %></p>
-        <% } %>
-        <form class="view-Counts-form" method="post" enctype="multipart/form-data">
-            <table class="formTable">
-                <tr>
-                    <td colspan="3">
-						<select name="session_dropdown" class="selectpicker" onchange="showFields()" id="session_dropdown"
-                            style="border-color: #ced4da; border-width: 1px;" data-width="500px" title="-Select a Session-">
-                            <% session.forEach((session, editsession) => { %>
-                            <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
-                            <% }) %>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="hiddenFields">
-                    <td colspan="3">
-                        <button type="submit" class="btn btn-primary submit">View Counts</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-</div>
+		<% if (counts.length > 0) {%>
+			<table class="table table-sm table-hovered">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">Session Title</th>
+						<th scope="col">Room Name</th>
+						<th scope="col">Start Time</th>
+						<th scope="col">End Time</th>
+						<th scope="col">Start Count</th>
+						<th scope="col">Mid Count</th>
+						<th scope="col">Final Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% counts.forEach((count, index) => { %>
+						<tr>
+							<td><%= count.Title %></td>
+							<td><%= count.RoomName %></td>
+							<td><%= count.TimePoint_Start %></td>
+							<td><%= count.TimePoint_End %></td>
+							<td><%= count.StartCount %></td>
+							<td><%= count.MidCount %></td>
+							<td><%= count.FinalCount %></td>
+						</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		<% } else { %>
+			<p class="text-center">No counts found</p>
+		<% } %>
+	</div>
 </body>
 
 </html>
