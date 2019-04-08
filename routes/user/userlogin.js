@@ -19,8 +19,11 @@ module.exports = {
 
         let daily_password = JSON.stringify(jsoncontents.daily_password);
 
-        if(password === daily_password){
+        if(password == daily_password){
             res.redirect('/index.ejs');
+        }
+        else{
+            console.log('not working');
         }
     },
 };
