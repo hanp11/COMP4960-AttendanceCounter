@@ -92,8 +92,8 @@ app.post('/addsession', addSession);
 app.post('/editsession', editSession);
 app.post('/deletesession', deleteSession);
 // User Login
-app.get('/userLogin', userLoginPage);
-app.post('/userLogin', userLogin);
+app.get('/', userLoginPage);
+app.post('/', userLogin);
 // Counts
 app.get('/addcounts', addCountsPage);
 app.post('/addcounts', addCounts);

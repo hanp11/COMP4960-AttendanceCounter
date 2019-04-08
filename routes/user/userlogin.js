@@ -20,7 +20,7 @@ module.exports = {
         let daily_password = JSON.stringify(jsoncontents.daily_password);
 
         if(password == daily_password){
-            res.redirect('/index');
+            res.redirect('/addcounts');
         }
         else{
             console.log('not working');
