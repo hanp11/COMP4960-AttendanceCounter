@@ -35,11 +35,11 @@ module.exports = {
         existing_time_end = existing_time_end.split(":")
 
         let exisiting_start_hour = existing_time_start[0];
-        let exisiting_start_minute = existing_time_start[1];
-        let exisiting_start_am_pm = existing_time_start[3];
+        let exisiting_start_minute = existing_time_start[1].split(" ")[0];
+        let exisiting_start_am_pm = existing_time_start[1].split(" ")[1];
         let exisiting_end_hour = existing_time_end[0];
-        let exisiting_end_minute = existing_time_end[1];
-        let exisiting_end_am_pm = existing_time_end[3];
+        let exisiting_end_minute = existing_time_end[1].split(" ")[0];
+        let exisiting_end_am_pm = existing_time_end[1].split(" ")[1];
        
         if(exisiting_start_am_pm == 'PM'){
             exisiting_start_hour = parseInt(exisiting_start_hour) + 12;
@@ -49,7 +49,7 @@ module.exports = {
             exisiting_end_hour = parseInt(exisiting_end_hour) + 12;
         }
         let start_time = exisiting_start_hour+":"+exisiting_start_minute+":00";
-        let end_time = exisiting_end_hour+":"+exisiting_end_minute+":00";
+        let end_time = exisiting_end_hour + ":" + exisiting_end_minute + ":00";
 
         let KeyQuery = "SELECT RoomID FROM `room` WHERE RoomName = '" + room_name + "';SELECT TimePointID FROM `timepoint` WHERE TimePoint_Start = '" + start_time + "' AND TimePoint_End = '" + end_time + "';";
 
