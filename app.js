@@ -6,6 +6,8 @@ const path = require('path');
 const app = express();
 
 const {getHomePage} = require('./routes/index');
+
+const {getDataPage} = require('./routes/viewdata');
 //Room
 const {addRoomPage, addRoom} = require('./routes/rooms/addroom');
 const {editRoom, editRoomPage} = require('./routes/rooms/editroom');
@@ -25,7 +27,9 @@ const {deleteSessionPage, deleteSession} = require('./routes/sessions/deletesess
 //User Login
 const {userLoginPage, userLogin} = require('./routes/user/userLogin');
 //Counts
-const {addCountsPage, addCounts} = require('./routes/counts/addcounts');
+const { addCountsPage, addCounts } = require('./routes/counts/addcounts');
+const { getCountsSessionPage } = require('./routes/counts/viewcounts_session');
+const { getCountsSpeakerPage } = require('./routes/counts/viewcounts_speaker');
 
 const port = 5000;
 
@@ -61,6 +65,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 app.use(fileUpload()); // configure fileupload
 
 // routes for the app
+app.get('/viewdata', getDataPage);
 
 app.get('/index', getHomePage);
 // Rooms
@@ -97,6 +102,8 @@ app.post('/', userLogin);
 // Counts
 app.get('/addcounts', addCountsPage);
 app.post('/addcounts', addCounts);
+app.get('/viewcounts_session', getCountsSessionPage);
+app.get('/viewcounts_speaker', getCountsSpeakerPage);
 
 // set the app to listen on the port
 app.listen(port, () => {
