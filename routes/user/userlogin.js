@@ -1,65 +1,41 @@
 const fs = require('fs');
 
+var contents1 = fs.readFileSync("daily-password.json");
+var jsoncontents1 = JSON.parse(contents1);
+
+var contents2 = fs.readFileSync("admin-password.json");
+var jsoncontents2 = JSON.parse(contents2);
+
+
 module.exports = {
     userLoginPage: (req, res) => {
-        let query = "SELECT * FROM `room`"; // query database to get all the Rooms
-        // execute query
-        db.query(query, (err, result) => {
-            if (err) {
-                res.redirect('/');
-            }
         res.render('userlogin.ejs', {
             title: "Add Room"
-            ,message: ''
-            ,room: result
             });
-        });
     },
 
     userLogin: (req, res) => {
 
         let message = '';
-        let room_name = req.body.room_name;
-        let capactity = req.body.capacity_id;
+        let username = req.body.username;
+        let password = req.body.password;
 
-        let existingRoomQuery = "SELECT * FROM `room` WHERE RoomName = '" + room_name + "'";
+        if(password == jsoncontents1.daily_password){
+            
+            var fileName = './username.json';
+            var file = require(fileName);
+            file.name = username;
 
-        db.query(existingRoomQuery, (err, result) => {
-            if (err) {
-                return res.status(500).send(err);
-            }
-            if (result.length > 0) {
-                message = 'Room Name already exists';
-                res.render('userlogin.ejs', {
-                    message,
-                    title: "Add Room"
+            fs.writeFile(fileName, JSON.stringify(file, null, 2), function (err) {
+            if (err) return console.log(err);
                 });
-                
-            } else {
-                // send the room's details to the database
-                let query = "INSERT INTO `room` (RoomName, Capacity) VALUES ('" +
-                    room_name + "', '" + capactity +"')";
-                db.query(query, (err, result) => {
-                    if (err) {
-                        return res.status(500).send(err);
-                    }
-                    // res.redirect('/');
-                    query = "SELECT * FROM `room`"; // query database to get all the Rooms
-                    // execute query
-                    db.query(query, (err, result) => {
-                        if (err) {
-                            res.redirect('/');
-                        }
-                    res.render('userlogin.ejs', {
-                        title: "Add Room"
-                        ,message: 'Room Added'
-                        ,room: result
-                        });
-                    });
-                });
-                    
-            }
-        });
+
+            res.redirect('/addcounts');
+        }else if(password == jsoncontents2.admin_password){
+            res.redirect('/index');
+        }else{
+            //need to add wrong password message
+            res.redirect('/');
+        }
     },
-
 };
