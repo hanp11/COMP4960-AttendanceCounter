@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<% include ../partials/header.ejs %>
+
+<div>
+    <h1 style="text-align:center;font-family: Oswald;margin-top:30px;">Counts</h1>
+	<label style="display: block; text-align: center; line-height: 150%; padding-bottom: 0;">Select a session or a speaker:</label>&nbsp;<br />
+	<ul class="nav nav-pills" style="margin-top: 0;">
+            <li class="nav-item">
+                <a class="nav-link active" href="viewcounts_session">Session</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="viewcounts_speaker">Speaker</a>
+            </li>       
+    </ul>
+    <div class="container">
+        <% if (message != '') { %>
+        <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <form class="view-Counts-form" method="post" enctype="multipart/form-data">
+            <table class="formTable">
+                <tr>
+                    <td colspan="3">
+						<select name="session_dropdown" class="selectpicker" onchange="showFields()" id="session_dropdown"
+                            style="border-color: #ced4da; border-width: 1px;" data-width="500px" title="-Select a Session-">
+                            <% session.forEach((session, editsession) => { %>
+                            <option name="session_dropdown" id="session-dropdown"><%= session.Title %></option>
+                            <% }) %>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="hiddenFields">
+                    <td colspan="3">
+                        <button type="submit" class="btn btn-primary submit">View Counts</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+</div>
+</body>
+
+</html>
