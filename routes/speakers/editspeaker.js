@@ -20,6 +20,7 @@ module.exports = {
         let first_name = req.body.first_name;
         let last_name = req.body.last_name;
         let email = req.body.email;
+        email_key = email.match('(.*)')[0];
         console.log(email)
         console.log(email_key)
 
