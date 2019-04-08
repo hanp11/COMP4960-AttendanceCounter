@@ -17,13 +17,11 @@ module.exports = {
         let username = req.body.username;
         let password = req.body.password;
 
-        let daily_password = JSON.stringify(jsoncontents.daily_password);
-
-        if(password == daily_password){
+        if(password == jsoncontents.daily_password){
             res.redirect('/addcounts');
         }
         else{
-            console.log('not working');
+            res.redirect('/');
         }
     },
 };
